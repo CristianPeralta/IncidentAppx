@@ -5,5 +5,6 @@ var userController = require('../controllers/userController')
 /* GET home page. */
 
 router.post('/login', userController.login)
+router.get('/user', userController.getUser)
 
 module.exports = router;
