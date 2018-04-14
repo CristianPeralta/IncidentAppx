@@ -51,13 +51,11 @@ export default {
   },
   methods: {
     getUser () {
-      this.$store.dispatch('getUser').then((response) => {
-        console.log(response)
+      this.$store.dispatch('getUser').then(() => {
       })
     },
     login () {
-      this.$store.dispatch('login', this.form).then((response) => {
-        console.log(response)
+      this.$store.dispatch('login', this.form).then(() => {
         this.$router.push({name: 'Home'})
       })
     }

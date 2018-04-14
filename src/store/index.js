@@ -11,19 +11,24 @@ export default new Vuex.Store({
   },
   mutation: {
     addUser (state, user) {
+      console.log(`user in mutation`)
       state.user = user
     }
   },
   actions: {
     getUser ({dispatch, commit, state}) {
       if (!state.user) {
-        return LocalServices.user().then(({data}) => {
+        LocalServices.user().then(({data}) => {
+          console.log(data.name)
           commit('addUser', data)
+        }).catch(() => {
+          this.$router.push({name: 'Login'})
         })
       }
     },
     login ({dispatch, commit, state}, form) {
       return LocalServices.login(form).then(({data}) => {
+        console.log(data.name)
         commit('addUser', data)
       })
     }
