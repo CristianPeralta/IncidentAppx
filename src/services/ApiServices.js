@@ -8,7 +8,7 @@ export default {
     return Api().post('login', params)
   },
   user () {
-    return Api().get('user')
+    return Api().get('users')
   },
   logout () {
     return Api().post('logout')
@@ -18,5 +18,11 @@ export default {
   },
   getDependences () {
     return Api().get('dependences')
+  },
+  editUser (id) {
+    return Api().get(`users/${id}`)
+  },
+  updateUser (id, params) {
+    return Api().put(`users/${id}`, params)
   }
 }
