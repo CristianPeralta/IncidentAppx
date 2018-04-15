@@ -24,5 +24,11 @@ export default {
   },
   updateUser (id, params) {
     return Api().put(`users/${id}`, params)
+  },
+  editDependence (id) {
+    return Api().get(`dependences/${id}`)
+  },
+  updateDependence (id, params) {
+    return Api().put(`dependences/${id}`, params)
   }
 }

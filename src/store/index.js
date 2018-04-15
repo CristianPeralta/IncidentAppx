@@ -52,6 +52,11 @@ export default new Vuex.Store({
         commit('getDependences', data)
       })
     },
+    editDependence ({dispatch, commit, state}, id) {
+      Api.editDependence(id).then(({data}) => {
+        commit('editDependences', data)
+      })
+    },
     getDependences ({dispatch, commit, state}) {
       Api.getDependences().then(({data}) => {
         commit('addDependence', data)
