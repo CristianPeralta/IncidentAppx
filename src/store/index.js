@@ -15,7 +15,6 @@ export default new Vuex.Store({
   },
   mutation: {
     addUser (state, user) {
-      console.log(`user in mutation`)
       state.user = user
     },
     getDependences (state, data) {
@@ -33,13 +32,15 @@ export default new Vuex.Store({
     },
     updateDependence (state, data, index) {
       state.dependences.splice(index, 1, data)
+    },
+    killUser (state) {
+      state.user = {}
     }
   },
   actions: {
     getUser ({dispatch, commit, state}) {
       if (!state.user) {
         LocalServices.user().then(({data}) => {
-          console.log(data.name)
           commit('addUser', data)
         }).catch(() => {
           this.$router.push({name: 'Login'})
@@ -81,6 +82,9 @@ export default new Vuex.Store({
         console.log(data.name)
         commit('addUser', data)
       })
+    },
+    logout ({dispatch, commit, state}) {
+      commit('killUser')
     }
   }
 })
