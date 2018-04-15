@@ -9,7 +9,9 @@ export default new Vuex.Store({
   state: {
     user: {},
     userDraft: {},
-    dependences: []
+    dependences: [],
+    dependenceDraft: {},
+    dependenceIndex: 0
   },
   mutation: {
     addUser (state, user) {
@@ -24,6 +26,13 @@ export default new Vuex.Store({
     },
     editUser (state, data) {
       state.userDraft = data
+    },
+    editDependence (state, data, index) {
+      state.dependenceDraft = data
+      state.dependenceIndex = index
+    },
+    updateDependence (state, data, index) {
+      state.dependences.splice(index, 1, data)
     }
   },
   actions: {
@@ -52,9 +61,14 @@ export default new Vuex.Store({
         commit('getDependences', data)
       })
     },
-    editDependence ({dispatch, commit, state}, id) {
+    editDependence ({dispatch, commit, state}, id, index) {
       Api.editDependence(id).then(({data}) => {
-        commit('editDependences', data)
+        commit('editDependence', data, index)
+      })
+    },
+    updateDependence ({dispatch, commit, state}, form) {
+      Api.updateDependence(form).then(({data}) => {
+        commit('updateDependence', data, index)
       })
     },
     getDependences ({dispatch, commit, state}) {
