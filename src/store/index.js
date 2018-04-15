@@ -7,12 +7,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: {}
+    user: {},
+    dependences: []
   },
   mutation: {
     addUser (state, user) {
       console.log(`user in mutation`)
       state.user = user
+    },
+    getDependences (state, data) {
+      state.dependences = data
+    },
+    addDependence (state, data) {
+      state.dependences.push(data)
     }
   },
   actions: {
@@ -25,6 +32,16 @@ export default new Vuex.Store({
           this.$router.push({name: 'Login'})
         })
       }
+    },
+    newDependence ({dispatch, commit, state}) {
+      Api.newDependence().then(({data}) => {
+        commit('getDependences', data)
+      })
+    },
+    getDependences ({dispatch, commit, state}) {
+      Api.getDependences().then(({data}) => {
+        commit('addDependence', data)
+      })
     },
     login ({dispatch, commit, state}, form) {
       return LocalServices.login(form).then(({data}) => {
