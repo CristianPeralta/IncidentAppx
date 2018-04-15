@@ -8,6 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: {},
+    userDraft: {},
     dependences: []
   },
   mutation: {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     addDependence (state, data) {
       state.dependences.push(data)
+    },
+    editUser (state, data) {
+      state.userDraft = data
     }
   },
   actions: {
@@ -32,6 +36,16 @@ export default new Vuex.Store({
           this.$router.push({name: 'Login'})
         })
       }
+    },
+    editUser ({dispatch, commit, state}) {
+      Api.editUser(state.user._id).then(({data}) => {
+        commit('editUser', data)
+      })
+    },
+    updateUser ({dispatch, commit, state}, form) {
+      Api.updateUser(form).then(({data}) => {
+        commit('addUser', data)
+      })
     },
     newDependence ({dispatch, commit, state}) {
       Api.newDependence().then(({data}) => {
