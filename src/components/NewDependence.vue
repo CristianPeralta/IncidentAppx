@@ -84,7 +84,6 @@ export default {
   },
   methods: {
     sendForm () {
-      console.log('try send')
       this.$store.dispatch('newDependence', this.form)
     },
     getDependences () {

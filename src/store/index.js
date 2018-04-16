@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import ApiServices from '../services/ApiServices'
+
+import router from '../router'
 import LocalServices from '../services/LocalServices'
 import ApiServices from '../services/ApiServices'
 
@@ -46,20 +47,25 @@ export default new Vuex.Store({
       state.user = {}
     }
   },
+  getters: {
+    isOnline: state => state.user
+  },
   actions: {
     signup ({commit}, form) {
       ApiServices.editUser(form).then(({data}) => {
         commit('ADD_USER', data)
-        this.$router.push({name: 'Home'})
+        router.push({name: 'Home'})
       })
     },
-    getUser ({dispatch, commit, state}) {
-      if (!state.user) {
+    getUser ({commit, state, getters}) {
+      if (getters.isOnline) {
         LocalServices.user().then(({data}) => {
           commit('ADD_USER', data)
         }).catch(() => {
-          this.$router.push({name: 'Login'})
+          router.push({name: 'Login'})
         })
+      } else {
+        router.push({name: 'Home'})
       }
     },
     editUser ({dispatch, commit, state}) {
@@ -102,7 +108,6 @@ export default new Vuex.Store({
     },
     login ({dispatch, commit, state}, form) {
       return LocalServices.login(form).then(({data}) => {
-        console.log(data.name)
         commit('ADD_USER', data)
       })
     },

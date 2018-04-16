@@ -1,25 +1,54 @@
 <template lang="html">
-  <section class="hero is-success is-fullheight container">
+  <section class="hero is-fullheight container">
     <div class=""></div>
       <div class="container has-text-centered">
         <div class="column is-4 is-offset-4">
           <h3 class="title has-text-grey">Sign Up</h3>
           <div class="box">
+              <figure class="avatar">
+               <img height="128" width="128" src='https://image.flaticon.com/icons/svg/179/179948.svg'>
+             </figure>
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="text" v-model="name" placeholder="Your Name" autofocus="">
+                  <input class="input is-large" type="text" v-model="form.name" placeholder="Your Name" autofocus="">
                 </div>
               </div>
 
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="email" v-model="email" placeholder="Your Email">
+                  <input class="input is-large" type="text" v-model="form.lastname" placeholder="Your Lastname">
                 </div>
               </div>
 
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="password" v-model="password" placeholder="Your Password">
+                  <input class="input is-large" type="text" v-model="form.dni" placeholder="Your DNI">
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <input class="input is-large" type="text" v-model="form.cellphone" placeholder="Your cellphone">
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <input class="input is-large" type="email" v-model="form.email" placeholder="Your Email">
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <select v-model="form.dependence" class="input select" placeholder="dependence">
+                    <option v-for="(dependence, index) in allDependences" :value="dependence._id" :key="index">{{dependence.acronym}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <input class="input is-large" type="password" v-model="form.password" placeholder="Your Password">
                 </div>
               </div>
 
@@ -49,11 +78,22 @@ export default {
     return {
       form: {
         name: '',
+        lastname: '',
+        dni: '',
         email: '',
+        cellphone: '',
+        dependence: '',
         password: ''
       },
-      preview: 'https://image.flaticon.com/icons/svg/179/179948.svg',
       passwordDraft: ''
+    }
+  },
+  created () {
+    this.getDependences()
+  },
+  computed: {
+    allDependences () {
+      return this.$store.state.dependences
     }
   },
   methods: {
@@ -63,49 +103,13 @@ export default {
       } else {
         alert('Password doesnt match')
       }
+    },
+    getDependences () {
+      this.$store.dispatch('getDependences')
     }
   }
 }
 </script>
 
 <style>
-   html,body {
-    font-family: 'Open Sans', serif;
-    font-size: 14px;
-    font-weight: 300;
-  }
-  .container{
-    margin:0;
-    padding: 0;
-  }
-  .hero.is-success {
-    background: #F2F6FA;
-  }
-  .hero .nav, .hero.is-success .nav {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-  .box {
-    margin-top: 5rem;
-  }
-  .avatar {
-    margin-top: -70px;
-    padding-bottom: 20px;
-  }
-  .avatar img {
-    padding: 5px;
-    background: #fff;
-    border-radius: 50%;
-    -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
-    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
-  }
-  input {
-    font-weight: 300;
-  }
-  p {
-    font-weight: 700;
-  }
-  p.subtitle {
-    padding-top: 1rem;
-  }
 </style>
