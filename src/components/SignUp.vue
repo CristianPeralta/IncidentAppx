@@ -25,7 +25,7 @@
 
               <div class="field">
                 <div class="control">
-                  <input class="input is-large" type="password" v-model="confirmPassword" placeholder="Confirm Password">
+                  <input class="input is-large" type="password" v-model="passwordDraft" placeholder="Confirm Password">
                 </div>
               </div>
 
@@ -47,22 +47,19 @@ export default {
   name: 'SignUp',
   data () {
     return {
-      name: '',
-      email: '',
-      photo: {},
+      form: {
+        name: '',
+        email: '',
+        password: '',
+      },
       preview: 'https://image.flaticon.com/icons/svg/179/179948.svg',
-      password: '',
-      confirmPassword: ''
+      passwordDraft: ''
     }
   },
   methods: {
     sendForm () {
-      if (this.password === this.confirmPassword) {
-        let form = new FormData();
-        form.append('name', this.name);
-        form.append('email', this.email);
-        form.append('password', this.password);
-        form.append('photo', this.photo);
+      if (this.form.password === this.passwordDraft) {
+        this.$dispatch('signup', this.form)
       } else{
         alert('Password doesnt match');
       }

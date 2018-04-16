@@ -47,6 +47,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    signup ({commit}, form) {
+      ApiServices.editUser(form).then(({data}) => {
+        console.log(form);
+      })
+    },
     getUser ({dispatch, commit, state}) {
       if (!state.user) {
         LocalServices.user().then(({data}) => {
