@@ -50,7 +50,7 @@ export default {
       form: {
         name: '',
         email: '',
-        password: '',
+        password: ''
       },
       preview: 'https://image.flaticon.com/icons/svg/179/179948.svg',
       passwordDraft: ''
@@ -60,8 +60,8 @@ export default {
     sendForm () {
       if (this.form.password === this.passwordDraft) {
         this.$dispatch('signup', this.form)
-      } else{
-        alert('Password doesnt match');
+      } else {
+        alert('Password doesnt match')
       }
     }
   }

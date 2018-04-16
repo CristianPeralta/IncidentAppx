@@ -49,7 +49,8 @@ export default new Vuex.Store({
   actions: {
     signup ({commit}, form) {
       ApiServices.editUser(form).then(({data}) => {
-        console.log(form);
+        commit('ADD_USER', data)
+        this.$router.push({name: 'Home'})
       })
     },
     getUser ({dispatch, commit, state}) {
@@ -72,8 +73,6 @@ export default new Vuex.Store({
       })
     },
     newDependence ({dispatch, commit, state}, form) {
-      console.log(form)
-
       let formData = new FormData()
       formData.append('name', form.name)
       formData.append('acronym', form.acronym)
