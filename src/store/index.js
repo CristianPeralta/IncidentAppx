@@ -22,7 +22,7 @@ export default new Vuex.Store({
     dependenceDraft: {},
     dependenceIndex: 0
   },
-  mutation: {
+  mutations: {
     [ADD_USER] (state, user) {
       state.user = user
     },
@@ -66,9 +66,19 @@ export default new Vuex.Store({
         commit('ADD_USER', data)
       })
     },
-    newDependence ({dispatch, commit, state}) {
-      ApiServices.newDependence().then(({data}) => {
-        commit('GET_DEPENDENCES', data)
+    newDependence ({dispatch, commit, state}, form) {
+      console.log(form)
+
+      let formData = new FormData()
+      formData.append('name', form.name)
+      formData.append('acronym', form.acronym)
+      formData.append('annex', form.annex)
+      formData.append('latitude', form.latitude)
+      formData.append('longitude', form.longitude)
+      formData.append('photo', form.photo)
+
+      ApiServices.newDependence(formData).then(({data}) => {
+        commit('ADD_DEPENDENCE', data)
       })
     },
     editDependence ({dispatch, commit, state}, id, index) {

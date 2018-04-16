@@ -14,7 +14,11 @@ export default {
     return Api().post('logout')
   },
   newDependence (params) {
-    return Api().post('dependences', params)
+    return Api().post('dependences', params, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
   },
   getDependences () {
     return Api().get('dependences')

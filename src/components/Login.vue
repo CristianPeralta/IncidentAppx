@@ -51,8 +51,7 @@ export default {
   },
   methods: {
     getUser () {
-      this.$store.dispatch('getUser').then(() => {
-      })
+      this.$store.dispatch('getUser')
     },
     login () {
       this.$store.dispatch('login', this.form).then(() => {
