@@ -6,6 +6,14 @@ import ApiServices from '../services/ApiServices'
 
 Vue.use(Vuex)
 
+const ADD_USER = 'ADD_USER'
+const GET_DEPENDENCES = 'GET_DEPENDENCES'
+const ADD_DEPENDENCE = 'ADD_DEPENDENCE'
+const EDIT_USER = 'EDIT_USER'
+const EDIT_DEPENDENCE = 'EDIT_DEPENDENCE'
+const UPDATE_DEPENDENCE = 'UPDATE_DEPENDENCE'
+const KILL_USER = 'KILL_USER'
+
 export default new Vuex.Store({
   state: {
     user: {},
@@ -15,26 +23,26 @@ export default new Vuex.Store({
     dependenceIndex: 0
   },
   mutation: {
-    addUser (state, user) {
+    [ADD_USER] (state, user) {
       state.user = user
     },
-    getDependences (state, data) {
+    [GET_DEPENDENCES] (state, data) {
       state.dependences = data
     },
-    addDependence (state, data) {
+    [ADD_DEPENDENCE] (state, data) {
       state.dependences.push(data)
     },
-    editUser (state, data) {
+    [EDIT_USER] (state, data) {
       state.userDraft = data
     },
-    editDependence (state, data, index) {
+    [EDIT_DEPENDENCE] (state, data, index) {
       state.dependenceDraft = data
       state.dependenceIndex = index
     },
-    updateDependence (state, data, index) {
+    [UPDATE_DEPENDENCE] (state, data, index) {
       state.dependences.splice(index, 1, data)
     },
-    killUser (state) {
+    [KILL_USER] (state) {
       state.user = {}
     }
   },
@@ -42,7 +50,7 @@ export default new Vuex.Store({
     getUser ({dispatch, commit, state}) {
       if (!state.user) {
         LocalServices.user().then(({data}) => {
-          commit('addUser', data)
+          commit('ADD_USER', data)
         }).catch(() => {
           this.$router.push({name: 'Login'})
         })
@@ -50,42 +58,42 @@ export default new Vuex.Store({
     },
     editUser ({dispatch, commit, state}) {
       ApiServices.editUser(state.user._id).then(({data}) => {
-        commit('editUser', data)
+        commit('EDIT_USER', data)
       })
     },
     updateUser ({dispatch, commit, state}, form) {
       ApiServices.updateUser(form).then(({data}) => {
-        commit('addUser', data)
+        commit('ADD_USER', data)
       })
     },
     newDependence ({dispatch, commit, state}) {
       ApiServices.newDependence().then(({data}) => {
-        commit('getDependences', data)
+        commit('GET_DEPENDENCES', data)
       })
     },
     editDependence ({dispatch, commit, state}, id, index) {
       ApiServices.editDependence(id).then(({data}) => {
-        commit('editDependence', data, index)
+        commit('EDIT_DEPENDENCE', data, index)
       })
     },
     updateDependence ({dispatch, commit, state}, form, index) {
       ApiServices.updateDependence(form).then(({data}) => {
-        commit('updateDependence', data, index)
+        commit('UPDATE_DEPENDENCE', data, index)
       })
     },
     getDependences ({dispatch, commit, state}) {
       ApiServices.getDependences().then(({data}) => {
-        commit('addDependence', data)
+        commit('GET_DEPENDENCES', data, { root: true })
       })
     },
     login ({dispatch, commit, state}, form) {
       return LocalServices.login(form).then(({data}) => {
         console.log(data.name)
-        commit('addUser', data)
+        commit('ADD_USER', data)
       })
     },
     logout ({dispatch, commit, state}) {
-      commit('killUser')
+      commit('KILL_USER')
     }
   }
 })
