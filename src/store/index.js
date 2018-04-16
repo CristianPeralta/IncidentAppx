@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 // import ApiServices from '../services/ApiServices'
 import LocalServices from '../services/LocalServices'
+import ApiServices from '../services/ApiServices'
 
 Vue.use(Vuex)
 
@@ -48,32 +49,32 @@ export default new Vuex.Store({
       }
     },
     editUser ({dispatch, commit, state}) {
-      Api.editUser(state.user._id).then(({data}) => {
+      ApiServices.editUser(state.user._id).then(({data}) => {
         commit('editUser', data)
       })
     },
     updateUser ({dispatch, commit, state}, form) {
-      Api.updateUser(form).then(({data}) => {
+      ApiServices.updateUser(form).then(({data}) => {
         commit('addUser', data)
       })
     },
     newDependence ({dispatch, commit, state}) {
-      Api.newDependence().then(({data}) => {
+      ApiServices.newDependence().then(({data}) => {
         commit('getDependences', data)
       })
     },
     editDependence ({dispatch, commit, state}, id, index) {
-      Api.editDependence(id).then(({data}) => {
+      ApiServices.editDependence(id).then(({data}) => {
         commit('editDependence', data, index)
       })
     },
-    updateDependence ({dispatch, commit, state}, form) {
-      Api.updateDependence(form).then(({data}) => {
+    updateDependence ({dispatch, commit, state}, form, index) {
+      ApiServices.updateDependence(form).then(({data}) => {
         commit('updateDependence', data, index)
       })
     },
     getDependences ({dispatch, commit, state}) {
-      Api.getDependences().then(({data}) => {
+      ApiServices.getDependences().then(({data}) => {
         commit('addDependence', data)
       })
     },
