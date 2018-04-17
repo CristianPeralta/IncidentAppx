@@ -12,6 +12,7 @@ module.exports.login = (req, res) => {
 
 module.exports.getUser = (req, res) => {
     let user = req.session.user
+    console.log(user)
     return res.json(user)
 }
 

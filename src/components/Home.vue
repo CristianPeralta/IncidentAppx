@@ -1,11 +1,23 @@
 <template lang="html">
-  <h1 class="is-large">{{text}}</h1>
+  <body class="dashboard">
+    <TheNav></TheNav>
+    <TheHeader></TheHeader>
+    <TheFooter></TheFooter>
+  </body>
 </template>
 
 <script>
+import TheNav from './utils/TheNav'
+import TheHeader from './utils/TheHeader'
+import TheFooter from './utils/TheFooter'
 
 export default {
   name: 'Home',
+  components: {
+    TheNav,
+    TheHeader,
+    TheFooter
+  },
   mounted () {
     this.getUser()
   },
