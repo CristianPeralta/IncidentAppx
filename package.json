@@ -6,9 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "all": "start npm run dev && start nodemon --exec babel-node --presets es2015 app.js",
-    "start": "nodemon --exec babel-node --presets es2015 app.js",
-    "watch": "npm run dev",
+    "start": "npm run dev",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",

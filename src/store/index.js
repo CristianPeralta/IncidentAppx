@@ -105,6 +105,7 @@ export default new Vuex.Store({
     },
     logout ({dispatch, commit, state}) {
       commit('LOGOUT')
+      router.push({name: 'Login'})
     }
   }
 })

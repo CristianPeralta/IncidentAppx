@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item brand-text" href="../">
-          Bulma Admin
+          OSIS
         </a>
         <div class="navbar-burger burger" data-target="navMenu">
           <span></span>
@@ -28,23 +28,17 @@
         </div>
 
         <div class="navbar-end">
-          <div class="navbar-item has-dropdown is-active">
-            <a class="navbar-link">
+          <div class="navbar-item has-dropdown" :class="{'is-active': isActive}">
+            <a class="navbar-link" @click="changeStatus">
               {{userName}}
             </a>
             <div class="navbar-dropdown is-right">
               <a class="navbar-item">
-                Overview
-              </a>
-              <a class="navbar-item">
-                Elements
-              </a>
-              <a class="navbar-item">
-                Components
+                Perfil
               </a>
               <hr class="navbar-divider">
               <div class="navbar-item">
-                Version 0.7.0
+                <a @click="logout">Salir</a>
               </div>
             </div>
           </div>
@@ -57,9 +51,22 @@
 <script>
 export default {
   name: 'TheNav',
+  data () {
+    return {
+      isActive: false
+    }
+  },
   computed: {
     userName () {
-      return this.$state.user.name
+      return this.$store.state.user.name
+    }
+  },
+  methods: {
+    changeStatus () {
+      this.isActive = !this.isActive
+    },
+    logout () {
+      this.$store.dispatch('logout')
     }
   }
 }
