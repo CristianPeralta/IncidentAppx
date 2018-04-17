@@ -8,14 +8,7 @@
     <div class="columns">
       <TheMenu></TheMenu>
       <div class="column is-9">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-          <ul>
-            <li><a href="../">Bulma</a></li>
-            <li><a href="../">Templates</a></li>
-            <li><a href="../">Examples</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Admin</a></li>
-          </ul>
-        </nav>
+        <SubNav></SubNav>
         <section class="hero is-info welcome is-small">
           <div class="hero-body">
             <div class="container">
@@ -190,11 +183,14 @@
 import TheNav from './utils/TheNav'
 import TheMenu from './utils/TheMenu'
 import TheFooter from './utils/TheFooter'
+import SubNav from './utils/SubNav'
+
 export default {
   name: 'Home',
   components: {
     TheNav,
     TheMenu,
+    SubNav,
     TheFooter
   },
   mounted () {
