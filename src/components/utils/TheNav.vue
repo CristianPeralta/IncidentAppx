@@ -27,6 +27,28 @@
           </a>
         </div>
 
+        <div class="navbar-end">
+          <div class="navbar-item has-dropdown is-active">
+            <a class="navbar-link">
+              {{userName}}
+            </a>
+            <div class="navbar-dropdown is-right">
+              <a class="navbar-item">
+                Overview
+              </a>
+              <a class="navbar-item">
+                Elements
+              </a>
+              <a class="navbar-item">
+                Components
+              </a>
+              <hr class="navbar-divider">
+              <div class="navbar-item">
+                Version 0.7.0
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -34,7 +56,12 @@
 
 <script>
 export default {
-  name: 'TheNav'
+  name: 'TheNav',
+  computed: {
+    userName () {
+      return this.$state.user.name
+    }
+  }
 }
 </script>
 
