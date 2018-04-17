@@ -3,6 +3,7 @@
     <TheNav></TheNav>
     <TheHeader></TheHeader>
     <TheFooter></TheFooter>
+    <button type="button" @click="getUser" name="button">GET USER</button>
   </body>
 </template>
 

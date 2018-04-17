@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import router from '../router'
-import LocalServices from '../services/LocalServices'
 import ApiServices from '../services/ApiServices'
 
 Vue.use(Vuex)
@@ -13,7 +12,7 @@ const ADD_DEPENDENCE = 'ADD_DEPENDENCE'
 const EDIT_USER = 'EDIT_USER'
 const EDIT_DEPENDENCE = 'EDIT_DEPENDENCE'
 const UPDATE_DEPENDENCE = 'UPDATE_DEPENDENCE'
-const KILL_USER = 'KILL_USER'
+const LOGOUT = 'LOGOUT'
 
 export default new Vuex.Store({
   state: {
@@ -43,12 +42,12 @@ export default new Vuex.Store({
     [UPDATE_DEPENDENCE] (state, data, index) {
       state.dependences.splice(index, 1, data)
     },
-    [KILL_USER] (state) {
+    [LOGOUT] (state) {
       state.user = {}
     }
   },
   getters: {
-    isOnline: state => state.user
+    isOnline: state => state.user._id
   },
   actions: {
     signup ({commit}, form) {
@@ -57,16 +56,8 @@ export default new Vuex.Store({
         router.push({name: 'Home'})
       })
     },
-    getUser ({commit, state, getters}) {
-      if (getters.isOnline) {
-        LocalServices.user().then(({data}) => {
-          commit('ADD_USER', data)
-        }).catch(() => {
-          router.push({name: 'Login'})
-        })
-      } else {
-        router.push({name: 'Home'})
-      }
+    getUser ({commit, getters}) {
+      getters.isOnline ? router.push({name: 'Home'}) : router.push({name: 'Login'})
     },
     editUser ({dispatch, commit, state}) {
       ApiServices.editUser(state.user._id).then(({data}) => {
@@ -107,13 +98,13 @@ export default new Vuex.Store({
       })
     },
     login ({dispatch, commit, state}, form) {
-      return LocalServices.login(form).then(({data}) => {
+      return ApiServices.login(form).then(({data}) => {
         commit('ADD_USER', data)
         router.push({name: 'Home'})
       })
     },
     logout ({dispatch, commit, state}) {
-      commit('KILL_USER')
+      commit('LOGOUT')
     }
   }
 })
