@@ -3,7 +3,6 @@
     <TheNav></TheNav>
     <TheHeader></TheHeader>
     <TheFooter></TheFooter>
-    <button type="button" @click="getUser" name="button">GET USER</button>
   </body>
 </template>
 
@@ -36,4 +35,10 @@ export default {
 </script>
 
 <style lang="css">
+@import '../assets/css/backend/bootstrap.min3f0d.css';
+@import '../assets/css/backend/bootstrap-extend.min3f0d.css';
+@import '../assets/css/backend/site.min3f0d.css';
+@import '../assets/css/backend/skintools.min3f0d.css';
+@import '../assets/css/backend/v1.min3f0d.css';
+@import 'https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css';
 </style>
