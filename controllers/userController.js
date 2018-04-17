@@ -5,13 +5,13 @@ module.exports.login = (req, res) => {
   ApiServices.login(data).then((response) => {
     req.session.user = response.data
     let currentUser = req.session.user
+    console.log(currentUser)
     return res.json(currentUser)
   })
 }
 
-module.exports.getUser = (req,res) => {
+module.exports.getUser = (req, res) => {
     let user = req.session.user
-    if (!user) return res.sendStatus(404)
     return res.json(user)
 }
 

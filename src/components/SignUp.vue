@@ -99,7 +99,7 @@ export default {
   methods: {
     sendForm () {
       if (this.form.password === this.passwordDraft) {
-        this.$dispatch('signup', this.form)
+        this.$store.dispatch('signup', this.form)
       } else {
         alert('Password doesnt match')
       }

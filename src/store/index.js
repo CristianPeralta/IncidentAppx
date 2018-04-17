@@ -52,7 +52,7 @@ export default new Vuex.Store({
   },
   actions: {
     signup ({commit}, form) {
-      ApiServices.editUser(form).then(({data}) => {
+      ApiServices.signup(form).then(({data}) => {
         commit('ADD_USER', data)
         router.push({name: 'Home'})
       })
@@ -109,6 +109,7 @@ export default new Vuex.Store({
     login ({dispatch, commit, state}, form) {
       return LocalServices.login(form).then(({data}) => {
         commit('ADD_USER', data)
+        router.push({name: 'Home'})
       })
     },
     logout ({dispatch, commit, state}) {
