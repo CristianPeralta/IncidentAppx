@@ -7,7 +7,7 @@ export default {
   login (params) {
     return Api().post('login', params)
   },
-  user () {
+  users () {
     return Api().get('users')
   },
   logout () {

@@ -37,14 +37,25 @@ export default {
   mounted () {
     this.getUser()
   },
+  created () {
+    this.getUsers()
+  },
   data () {
     return {
       text: 'OSIS!'
     }
   },
+  computed: {
+    allUsers () {
+      return this.$store.state.users
+    }
+  },
   methods: {
     getUser () {
       this.$store.dispatch('getUser')
+    },
+    getUsers () {
+      this.$store.dispatch('getUsers')
     }
   }
 }

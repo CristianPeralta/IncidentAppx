@@ -1,5 +1,5 @@
 <template lang='html'>
-    <v-client-table :columns='columns' :data='data' :options='options'>
+    <v-client-table :columns='columns' :data='allUsers' :options='options'>
       <a slot='uri' slot-scope='props' target='_blank' :href='props.row.uri' class='glyphicon glyphicon-eye-open'></a>
 
       <div slot='child_row' slot-scope='props'>
@@ -14,21 +14,30 @@ export default {
   name: 'DataTable',
   data () {
     return {
-      columns: ['name', 'code', 'uri'],
-      data: this.getData(),
+      columns: ['name', 'email', 'role'],
       options: {
-        theme: 'bulma',
         headings: {
-          name: 'Country Name',
-          code: 'Country Code',
-          uri: 'View Record'
+          name: 'Name',
+          email: 'Email',
+          role: 'Role'
         },
-        sortable: ['name', 'code'],
-        filterable: ['name', 'code']
+        sortable: ['name', 'email', 'role'],
+        filterable: ['name', 'email', 'role']
       }
     }
   },
+  created () {
+
+  },
+  computed: {
+    allUsers () {
+      return this.$store.state.users
+    }
+  },
   methods: {
+    getUsers () {
+      this.$store.dispatch('getUsers')
+    },
     getData () {
       return [{
         code: 'ZW',
