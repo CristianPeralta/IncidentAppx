@@ -10,7 +10,16 @@
       <div class="column is-9">
         <SubNav></SubNav>
         <!-- START CONTENT -->
-        <DataTable></DataTable>
+        <DataTable :columnsD="['name', 'email', 'dependence', 'role']" :dataD="allUsers" :optionsD="{
+          headings: {
+            'name': 'Name',
+            'email': 'Email',
+            'dependence': 'Dependence',
+            'role': 'Role'
+          },
+          sortable: ['name', 'email', 'role'],
+          filterable: ['name', 'email', 'role']
+        }"></DataTable>
         <!-- END CONTENT -->
       </div>
     </div>
