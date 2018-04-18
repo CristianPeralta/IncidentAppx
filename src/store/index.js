@@ -7,6 +7,7 @@ import ApiServices from '../services/ApiServices'
 Vue.use(Vuex)
 
 const ADD_USER = 'ADD_USER'
+const ADD_USERS = 'ADD_USERS'
 const GET_DEPENDENCES = 'GET_DEPENDENCES'
 const ADD_DEPENDENCE = 'ADD_DEPENDENCE'
 const EDIT_USER = 'EDIT_USER'
@@ -17,6 +18,7 @@ const LOGOUT = 'LOGOUT'
 export default new Vuex.Store({
   state: {
     user: {},
+    users: [],
     userDraft: {},
     dependences: [],
     dependenceDraft: {},
@@ -25,6 +27,9 @@ export default new Vuex.Store({
   mutations: {
     [ADD_USER] (state, user) {
       state.user = user
+    },
+    [ADD_USERS] (state, users) {
+      state.users = users
     },
     [GET_DEPENDENCES] (state, data) {
       state.dependences = data
@@ -69,6 +74,11 @@ export default new Vuex.Store({
     },
     getUser ({commit, getters}) {
       getters.isOnline ? router.push({name: 'Home'}) : router.push({name: 'Login'})
+    },
+    getUsers ({commit, getters}) {
+      ApiServices.users().then(({data}) => {
+        commit('ADD_USERS', data)
+      })
     },
     editUser ({dispatch, commit, state}) {
       ApiServices.editUser(state.user._id).then(({data}) => {
