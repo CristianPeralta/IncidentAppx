@@ -6,6 +6,8 @@ import Home from '@/components/Home'
 import NewDependence from '@/components/NewDependence'
 import SignUp from '@/components/SignUp'
 
+import DataTable from '@/components/DataTable'
+
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +31,12 @@ export default new Router({
       path: '/dependence/create',
       name: 'NewDependence',
       component: NewDependence
+    },
+    {
+      path: '/datatable',
+      name: 'DataTable',
+      component: DataTable
     }
+
   ]
 })

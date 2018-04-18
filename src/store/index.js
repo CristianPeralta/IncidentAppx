@@ -47,7 +47,18 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    isOnline: state => state.user._id
+    isOnline (state) {
+      return state.user._id
+    },
+    role (state) {
+      return state.user.role
+    },
+    isAdmin (state) {
+      return (state.user.role === 'admin') && (state.user.status)
+    },
+    isTechnician (state) {
+      return (state.user.role === 'technician') && (state.user.status)
+    }
   },
   actions: {
     signup ({commit}, form) {

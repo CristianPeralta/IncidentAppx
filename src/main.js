@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import VueTables from 'vue-tables-2'
 
 Vue.config.productionTip = false
+
+Vue.use(VueTables.ClientTable)
 
 /* eslint-disable no-new */
 new Vue({

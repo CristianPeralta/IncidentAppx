@@ -7,21 +7,32 @@
       <ul class="menu-list">
         <li><a class="is-active">Dashboard</a></li>
       </ul>
-      <p class="menu-label">
-        Administración
-      </p>
-      <ul class="menu-list">
-        <li><a>Incidencias</a></li>
-        <li><a>Usuarios</a></li>
-        <li><a>Solicitudes</a></li>
-        <li><a>Dependencias</a></li>
-      </ul>
+      <template v-if="isAdmin">
+        <p class="menu-label">
+          Administración
+        </p>
+        <ul class="menu-list">
+          <li><a>Incidencias</a></li>
+          <li><a>Usuarios</a></li>
+          <li><a>Solicitudes</a></li>
+          <li><a>Dependencias</a></li>
+        </ul>
+      </template>
+      <template v-if="isTechnician">
+        <p class="menu-label">
+          Incidencias
+        </p>
+        <ul class="menu-list">
+          <li><a>Mis Incidencias</a></li>
+          <li><a>Sin asignat</a></li>
+        </ul>
+      </template>
       <p class="menu-label">
         Información
       </p>
       <ul class="menu-list">
         <li><a>FAQ</a></li>
-        <li><a>Reportes</a></li>
+        <li v-if="isAdmin"><a>Reportes</a></li>
       </ul>
     </aside>
   </div>
@@ -29,6 +40,19 @@
 
 <script>
 export default {
+  name: 'TheMenu',
+  computed: {
+    getRole () {
+      return this.$store.getters.role
+    },
+    isAdmin () {
+      return this.$store.getters.isAdmin
+    },
+    isTechnician () {
+      return this.$store.getters.isTechnician
+    }
+
+  }
 }
 </script>
 
