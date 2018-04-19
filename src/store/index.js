@@ -30,6 +30,9 @@ export default new Vuex.Store({
     },
     [ADD_USERS] (state, users) {
       state.users = users
+      state.users.map((el, index) => {
+        el.dependence = el.dependence.acronym
+      })
     },
     [GET_DEPENDENCES] (state, data) {
       state.dependences = data
@@ -76,7 +79,7 @@ export default new Vuex.Store({
       getters.isOnline ? router.push({name: 'Home'}) : router.push({name: 'Login'})
     },
     getUsers ({commit, getters}) {
-      ApiServices.users().then(({data}) => {
+      return ApiServices.users().then(({data}) => {
         commit('ADD_USERS', data)
       })
     },
