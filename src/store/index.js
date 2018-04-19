@@ -26,6 +26,7 @@ export default new Vuex.Store({
   },
   mutations: {
     [ADD_USER] (state, user) {
+      localStorage.setItem('user', JSON.stringify(user))
       state.user = user
     },
     [ADD_USERS] (state, users) {
@@ -51,12 +52,16 @@ export default new Vuex.Store({
       state.dependences.splice(index, 1, data)
     },
     [LOGOUT] (state) {
+      localStorage.removeItem('user')
       state.user = {}
     }
   },
   getters: {
-    isOnline (state) {
-      return state.user._id
+    user (state) {
+      return localStorage.getItem('user')
+    },
+    isOnline (state, getters) {
+      return getters.user
     },
     role (state) {
       return state.user.role

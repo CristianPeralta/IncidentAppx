@@ -30,7 +30,7 @@
         <div class="navbar-end">
           <div class="navbar-item has-dropdown" :class="{'is-active': isActive}">
             <a class="navbar-link" @click="changeStatus">
-              {{userName}}
+              {{user.name}}
             </a>
             <div class="navbar-dropdown is-right">
               <a class="navbar-item">
@@ -57,8 +57,8 @@ export default {
     }
   },
   computed: {
-    userName () {
-      return this.$store.state.user.name
+    user () {
+      return JSON.parse(this.$store.getters.user)
     }
   },
   methods: {
