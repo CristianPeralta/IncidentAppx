@@ -14,7 +14,7 @@
         <ul class="menu-list">
           <li><a>Incidencias</a></li>
           <li><a @click="showUsers">Usuarios</a></li>
-          <li><a>Solicitudes</a></li>
+          <li><a @click="showSolicitudes">Solicitudes</a></li>
           <li><a @click="showDependences">Dependencias</a></li>
         </ul>
       </template>
@@ -59,6 +59,10 @@ export default {
     showDependences () {
       this.$store.dispatch('getDependences')
       this.$store.dispatch('addDatatable', 'dependences')
+    },
+    showSolicitudes () {
+      this.$store.dispatch('getSolicitudes')
+      this.$store.dispatch('addDatatable', 'solicitudes')
     }
   }
 }

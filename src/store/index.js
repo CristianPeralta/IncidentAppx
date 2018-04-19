@@ -15,16 +15,19 @@ const EDIT_DEPENDENCE = 'EDIT_DEPENDENCE'
 const UPDATE_DEPENDENCE = 'UPDATE_DEPENDENCE'
 const LOGOUT = 'LOGOUT'
 const ADD_DATATABLE = 'ADD_DATATABLE'
+const GET_SOLICITUDES = 'GET_SOLICITUDES'
 
 export default new Vuex.Store({
   state: {
+    allUsers: [],
     user: {},
     users: [],
     userDraft: {},
     dependences: [],
     dependenceDraft: {},
     dependenceIndex: 0,
-    datatable: ''
+    datatable: '',
+    solicitudes: []
   },
   mutations: {
     [ADD_USER] (state, user) {
@@ -32,9 +35,19 @@ export default new Vuex.Store({
       state.user = user
     },
     [ADD_USERS] (state, users) {
-      state.users = users
-      state.users.map((el, index) => {
-        el.dependence = el.dependence.acronym
+      state.allUsers = users
+      users.map((el, index) => {
+        if (el.status === 'true') {
+          el.dependence = el.dependence.acronym
+          state.users.push(el)
+        }
+      })
+    },
+    [GET_SOLICITUDES] (state) {
+      state.allUsers.map((el) => {
+        if (el.status === 'false') {
+          state.solicitudes.push(el)
+        }
       })
     },
     [GET_DEPENDENCES] (state, data) {
@@ -143,6 +156,9 @@ export default new Vuex.Store({
     },
     addDatatable ({dispatch, commit, state}, data) {
       commit('ADD_DATATABLE', data)
+    },
+    getSolicitudes ({commit, getters}) {
+      commit('GET_SOLICITUDES')
     }
   }
 })
