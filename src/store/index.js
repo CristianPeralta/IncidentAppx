@@ -58,7 +58,7 @@ export default new Vuex.Store({
       state.user = {}
     },
     [ADD_DATATABLE] (state, data) {
-      state.DataTable = data
+      state.datatable = data
     }
   },
   getters: {
@@ -71,11 +71,11 @@ export default new Vuex.Store({
     role (state) {
       return state.user.role
     },
-    isAdmin (state) {
-      return (state.user.role === 'admin') && (state.user.status)
+    isAdmin (state, getters) {
+      return (JSON.parse(getters.user).role === 'admin') && (JSON.parse(getters.user).status)
     },
-    isTechnician (state) {
-      return (state.user.role === 'technician') && (state.user.status)
+    isTechnician (state, getters) {
+      return (JSON.parse(getters.user).role === 'technician') && (JSON.parse(getters.user).status)
     }
   },
   actions: {
@@ -141,8 +141,8 @@ export default new Vuex.Store({
       commit('LOGOUT')
       router.push({name: 'Login'})
     },
-    addDatatable ({dispatch, commit, state}) {
-      commit('ADD_DATATABLE')
+    addDatatable ({dispatch, commit, state}, data) {
+      commit('ADD_DATATABLE', data)
     }
   }
 })

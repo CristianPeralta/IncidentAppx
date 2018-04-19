@@ -10,7 +10,7 @@
       <div class="column is-9">
         <SubNav></SubNav>
         <!-- START CONTENT -->
-        <DataTable :columnsD="['name', 'email', 'dependence', 'role']" :dataD="allUsers" :optionsD="{
+        <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role']" :dataD="allUsers" :optionsD="{
           headings: {
             'name': 'Name',
             'email': 'Email',
@@ -57,6 +57,9 @@ export default {
   computed: {
     allUsers () {
       return this.$store.state.users
+    },
+    datatable () {
+      return this.$store.state.datatable
     }
   },
   methods: {

@@ -13,7 +13,7 @@
         </p>
         <ul class="menu-list">
           <li><a>Incidencias</a></li>
-          <li><a>Usuarios</a></li>
+          <li><a @click="showUsers">Usuarios</a></li>
           <li><a>Solicitudes</a></li>
           <li><a>Dependencias</a></li>
         </ul>
@@ -53,7 +53,7 @@ export default {
     }
   },
   methods: {
-    shoUsers () {
+    showUsers () {
       this.$store.dispatch('addDatatable', 'users')
     }
   }
