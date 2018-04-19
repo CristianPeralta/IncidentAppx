@@ -20,6 +20,16 @@
           sortable: ['name', 'email', 'role'],
           filterable: ['name', 'email', 'role']
         }"></DataTable>
+
+        <DataTable v-if="datatable == 'dependences'" :columnsD="['name', 'acronym', 'annex']" :dataD="allDependences" :optionsD="{
+          headings: {
+            'name': 'Name',
+            'acronym': 'Acronym',
+            'annex': 'Annex'
+          },
+          sortable: ['name', 'acronym', 'annex'],
+          filterable: ['name', 'acronym', 'annex']
+        }"></DataTable>
         <!-- END CONTENT -->
       </div>
     </div>
@@ -57,6 +67,9 @@ export default {
   computed: {
     allUsers () {
       return this.$store.state.users
+    },
+    allDependences () {
+      return this.$store.state.dependences
     },
     datatable () {
       return this.$store.state.datatable

@@ -15,7 +15,7 @@
           <li><a>Incidencias</a></li>
           <li><a @click="showUsers">Usuarios</a></li>
           <li><a>Solicitudes</a></li>
-          <li><a>Dependencias</a></li>
+          <li><a @click="showDependences">Dependencias</a></li>
         </ul>
       </template>
       <template v-if="isTechnician">
@@ -55,6 +55,10 @@ export default {
   methods: {
     showUsers () {
       this.$store.dispatch('addDatatable', 'users')
+    },
+    showDependences () {
+      this.$store.dispatch('getDependences')
+      this.$store.dispatch('addDatatable', 'dependences')
     }
   }
 }
