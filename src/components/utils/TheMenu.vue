@@ -51,7 +51,11 @@ export default {
     isTechnician () {
       return this.$store.getters.isTechnician
     }
-
+  },
+  methods: {
+    shoUsers () {
+      this.$store.dispatch('addDatatable', 'users')
+    }
   }
 }
 </script>

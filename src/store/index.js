@@ -14,6 +14,7 @@ const EDIT_USER = 'EDIT_USER'
 const EDIT_DEPENDENCE = 'EDIT_DEPENDENCE'
 const UPDATE_DEPENDENCE = 'UPDATE_DEPENDENCE'
 const LOGOUT = 'LOGOUT'
+const ADD_DATATABLE = 'ADD_DATATABLE'
 
 export default new Vuex.Store({
   state: {
@@ -22,7 +23,8 @@ export default new Vuex.Store({
     userDraft: {},
     dependences: [],
     dependenceDraft: {},
-    dependenceIndex: 0
+    dependenceIndex: 0,
+    datatable: ''
   },
   mutations: {
     [ADD_USER] (state, user) {
@@ -54,6 +56,9 @@ export default new Vuex.Store({
     [LOGOUT] (state) {
       localStorage.removeItem('user')
       state.user = {}
+    },
+    [ADD_DATATABLE] (state, data) {
+      state.DataTable = data
     }
   },
   getters: {
@@ -135,6 +140,9 @@ export default new Vuex.Store({
     logout ({dispatch, commit, state}) {
       commit('LOGOUT')
       router.push({name: 'Login'})
+    },
+    addDatatable ({dispatch, commit, state}) {
+      commit('ADD_DATATABLE')
     }
   }
 })
