@@ -9,7 +9,7 @@
       <TheMenu></TheMenu>
       <div class="column is-9">
         <SubNav></SubNav>
-        <a @click="changeModal" class="button is-link">Modal</a>
+        <a @click="changeModal" class="button is-link">Nuevo</a>
         <!-- START CONTENT -->
         <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role', 'edit']" :dataD="allUsers" :optionsD="{
           headings: {
@@ -44,7 +44,7 @@
           filterable: ['name', 'acronym', 'annex']
         }"></DataTable>
         <!-- END CONTENT -->
-        <Modal :active="modalActive"></Modal>
+        <Modal :active="modalActive" :title="datatable"></Modal>
       </div>
     </div>
   </div>

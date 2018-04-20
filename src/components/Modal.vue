@@ -3,7 +3,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Modal title</p>
+        <p class="modal-card-title"><strong>{{title.toUpperCase()}}</strong></p>
         <button @click="changeModal" class="delete" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
@@ -23,6 +23,10 @@ export default {
     active: {
       default: false,
       Type: Boolean
+    },
+    title: {
+      default: 'Title',
+      Type: String
     }
   },
   methods: {
