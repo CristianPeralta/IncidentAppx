@@ -9,9 +9,16 @@
 </template>
 
 <script>
+import edit from './edit'
+import remove from './delete'
+
 export default {
   name: 'DataTable',
-  props: ['columnsD', 'dataD', 'optionsD']
+  props: ['columnsD', 'dataD', 'optionsD'],
+  templates: {
+    edit,
+    remove
+  }
 }
 </script>
 

@@ -44,6 +44,7 @@ export default new Vuex.Store({
       })
     },
     [GET_SOLICITUDES] (state) {
+      state.solicitudes = []
       state.allUsers.map((el) => {
         if (el.status === 'false') {
           state.solicitudes.push(el)
@@ -147,6 +148,7 @@ export default new Vuex.Store({
     login ({dispatch, commit, state}, form) {
       return ApiServices.login(form).then(({data}) => {
         commit('ADD_USER', data)
+      }).then(() => {
         router.push({name: 'Home'})
       })
     },

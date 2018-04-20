@@ -9,8 +9,9 @@
       <TheMenu></TheMenu>
       <div class="column is-9">
         <SubNav></SubNav>
+        <a @click="changeModal" class="button is-link">Modal</a>
         <!-- START CONTENT -->
-        <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role']" :dataD="allUsers" :optionsD="{
+        <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role', 'edit']" :dataD="allUsers" :optionsD="{
           headings: {
             'name': 'Name',
             'email': 'Email',
@@ -19,7 +20,9 @@
           },
           sortable: ['name', 'email', 'role'],
           filterable: ['name', 'email', 'role']
-        }"></DataTable>
+        }">
+           <a slot="edit" slot-scope="props" class="fa fa-edit" :href="showItem(props.row.id)">Editarr</a>
+        </DataTable>
 
         <DataTable v-if="datatable == 'solicitudes'" :columnsD="['name', 'email', 'role']" :dataD="allSolicitudes" :optionsD="{
           headings: {
@@ -41,6 +44,7 @@
           filterable: ['name', 'acronym', 'annex']
         }"></DataTable>
         <!-- END CONTENT -->
+        <Modal :active="modalActive"></Modal>
       </div>
     </div>
   </div>
@@ -53,6 +57,7 @@ import TheMenu from './utils/TheMenu'
 import TheFooter from './utils/TheFooter'
 import SubNav from './utils/SubNav'
 import DataTable from './DataTable'
+import Modal from './Modal'
 
 export default {
   name: 'Home',
@@ -61,7 +66,8 @@ export default {
     TheMenu,
     SubNav,
     DataTable,
-    TheFooter
+    TheFooter,
+    Modal
   },
   mounted () {
     this.getUser()
@@ -71,7 +77,8 @@ export default {
   },
   data () {
     return {
-      text: 'OSIS!'
+      text: 'OSIS!',
+      modalActive: false
     }
   },
   computed: {
@@ -94,6 +101,12 @@ export default {
     },
     getUsers () {
       this.$store.dispatch('getUsers')
+    },
+    showItem (id) {
+      console.log(id)
+    },
+    changeModal () {
+      this.modalActive = !this.modalActive
     }
   }
 }
