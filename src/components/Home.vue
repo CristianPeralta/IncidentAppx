@@ -45,7 +45,8 @@
         }"></DataTable>
         <!-- END CONTENT -->
         <Modal :active="modalActive" :title="datatable">
-          <Form></Form>
+          <!-- <Form></Form> -->
+          <UserForm></UserForm>
         </Modal>
       </div>
     </div>
@@ -61,6 +62,7 @@ import SubNav from './utils/SubNav'
 import DataTable from './DataTable'
 import Modal from './Modal'
 import Form from './Forms/DependenceForm'
+import UserForm from './Forms/UserForm'
 
 export default {
   name: 'Home',
@@ -71,7 +73,8 @@ export default {
     DataTable,
     TheFooter,
     Modal,
-    Form
+    Form,
+    UserForm
   },
   mounted () {
     this.getUser()
