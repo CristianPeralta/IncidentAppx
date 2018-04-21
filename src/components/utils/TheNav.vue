@@ -33,7 +33,7 @@
               {{user.name}}
             </a>
             <div class="navbar-dropdown is-right">
-              <a class="navbar-item">
+              <a @click="profileStatus" class="navbar-item">
                 Perfil
               </a>
               <hr class="navbar-divider">
@@ -45,15 +45,22 @@
         </div>
       </div>
     </div>
+    <Modal :active="profileActive" title="User Profile">
+      <Profile></Profile>
+    </Modal>
   </nav>
 </template>
 
 <script>
+import Modal from '../Modal'
+import Profile from '../Profile'
+
 export default {
   name: 'TheNav',
   data () {
     return {
-      isActive: false
+      isActive: false,
+      profileActive: false
     }
   },
   computed: {
@@ -61,9 +68,16 @@ export default {
       return JSON.parse(this.$store.getters['user/user'])
     }
   },
+  components: {
+    Modal,
+    Profile
+  },
   methods: {
     changeStatus () {
       this.isActive = !this.isActive
+    },
+    profileStatus () {
+      this.profileActive = !this.profileActive
     },
     logout () {
       this.$store.dispatch('user/logout')
