@@ -5,56 +5,7 @@
         <div class="container has-text-centered">
           <div class="column is-4 is-offset-4">
             <h3 class="title has-text-grey" style="margin-top : 40px;" >New Dependence</h3>
-              <div class="box">
-                  <figure class="avatar">
-                    <img height="128" width="128" :src='preview'>
-                    <div class="file is-centered">
-                      <label class="file-label">
-                        <input class="file-input" type="file" name="photo" @change="processFile($event)">
-                        <span class="file-cta">
-                          <span class="file-icon">
-                            <i class="fas fa-upload"></i>
-                          </span>
-                          <span class="file-label">
-                            Choose a file…
-                          </span>
-                        </span>
-                      </label>
-                    </div>
-                  </figure>
-
-                  <div class="field">
-                    <div class="control">
-                      <input class="input is-large" type="text" name="name" v-model="form.name" placeholder="Name" autofocus="">
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <div class="control">
-                      <input class="input is-large" type="text" name="acronym" v-model="form.acronym" placeholder="Acronym">
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <div class="control">
-                      <input class="input is-large" type="text" name="annex" v-model="form.annex" placeholder="Annex">
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <div class="control">
-                      <input class="input is-large" type="text" name="latitude" v-model="form.latitude" placeholder="Latitude">
-                    </div>
-                  </div>
-
-                  <div class="field">
-                    <div class="control">
-                      <input class="input is-large" type="text" name="longitude" v-model="form.longitude" placeholder="Longitude">
-                    </div>
-                  </div>
-
-                  <button @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Add</button>
-              </div>
+              <DependenceForm></DependenceForm>
           </div>
         </div>
       </div>
@@ -63,6 +14,8 @@
 </template>
 
 <script>
+import DependenceForm from './Forms/DependenceForm'
+
 export default {
   name: 'NewDependence',
   data () {
@@ -78,6 +31,9 @@ export default {
       allDependences: [],
       preview: 'https://st3.depositphotos.com/5266903/12981/v/950/depositphotos_129812138-stock-illustration-management-office-flat-vector-icon.jpg'
     }
+  },
+  components: {
+    DependenceForm
   },
   created () {
     this.getDependences()
