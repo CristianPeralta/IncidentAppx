@@ -90,13 +90,13 @@ export default {
   },
   computed: {
     allUsers () {
-      return this.$store.state.users
+      return this.$store.state['user/users']
     },
     allDependences () {
-      return this.$store.state.dependences
+      return this.$store.state['dependence/dependences']
     },
     allSolicitudes () {
-      return this.$store.state.solicitudes
+      return this.$store.state['user/solicitudes']
     },
     datatable () {
       return this.$store.state.datatable
@@ -104,10 +104,10 @@ export default {
   },
   methods: {
     getUser () {
-      this.$store.dispatch('getUser')
+      this.$store.dispatch('user/getUser')
     },
     getUsers () {
-      this.$store.dispatch('getUsers')
+      this.$store.dispatch('user/getUsers')
     },
     showItem (id) {
       console.log(id)

@@ -72,10 +72,10 @@ export default {
   },
   methods: {
     sendForm () {
-      this.$store.dispatch('newDependence', this.form)
+      this.$store.dispatch('dependence/newDependence', this.form)
     },
     getDependences () {
-      this.$store.dispatch('getDependences')
+      this.$store.dispatch('dependence/getDependences')
     },
     processFile (e) {
       this.form.photo = e.target.files[0]

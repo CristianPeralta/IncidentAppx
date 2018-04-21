@@ -1,3 +1,6 @@
+import router from '../../../router'
+import ApiServices from '../../../services/ApiServices'
+
 export const signup = ({commit}, form) => {
   ApiServices.signup(form).then(({data}) => {
     commit('ADD_USER', data)

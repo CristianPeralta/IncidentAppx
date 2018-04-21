@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     user () {
-      return JSON.parse(this.$store.getters.user)
+      return JSON.parse(this.$store.getters['user/user'])
     }
   },
   methods: {
@@ -66,7 +66,7 @@ export default {
       this.isActive = !this.isActive
     },
     logout () {
-      this.$store.dispatch('logout')
+      this.$store.dispatch('user/logout')
     }
   }
 }

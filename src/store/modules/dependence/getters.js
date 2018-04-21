@@ -4,7 +4,7 @@ export const getIds = state => {
 }
 
 export const getCoords = (state, id) => {
-  let coords = state.dependences.find(el => id == el._id)
+  let coords = state.dependences.find(el => id === el._id)
   return {
     latitude: coords.latitude,
     longitude: coords.longitude

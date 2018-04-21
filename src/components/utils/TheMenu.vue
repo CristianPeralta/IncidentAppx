@@ -43,13 +43,13 @@ export default {
   name: 'TheMenu',
   computed: {
     getRole () {
-      return this.$store.getters.role
+      return this.$store.getters['user/role']
     },
     isAdmin () {
-      return this.$store.getters.isAdmin
+      return this.$store.getters['user/isAdmin']
     },
     isTechnician () {
-      return this.$store.getters.isTechnician
+      return this.$store.getters['user/isTechnician']
     }
   },
   methods: {
@@ -57,11 +57,11 @@ export default {
       this.$store.dispatch('addDatatable', 'users')
     },
     showDependences () {
-      this.$store.dispatch('getDependences')
+      this.$store.dispatch('dependence/getDependences')
       this.$store.dispatch('addDatatable', 'dependences')
     },
     showSolicitudes () {
-      this.$store.dispatch('getSolicitudes')
+      this.$store.dispatch('user/getSolicitudes')
       this.$store.dispatch('addDatatable', 'solicitudes')
     }
   }

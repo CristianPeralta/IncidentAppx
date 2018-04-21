@@ -37,18 +37,6 @@ export default {
   },
   created () {
     this.getDependences()
-  },
-  methods: {
-    sendForm () {
-      this.$store.dispatch('newDependence', this.form)
-    },
-    getDependences () {
-      this.$store.dispatch('getDependences')
-    },
-    processFile (e) {
-      this.form.photo = e.target.files[0]
-      this.preview = URL.createObjectURL(e.target.files[0])
-    }
   }
 }
 </script>

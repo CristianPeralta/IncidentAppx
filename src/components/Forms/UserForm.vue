@@ -79,7 +79,7 @@ export default {
   },
   computed: {
     allDependences () {
-      return this.$store.state.dependences
+      return this.$store.state['dependence/dependences']
     }
   },
   methods: {
@@ -91,7 +91,7 @@ export default {
       }
     },
     getDependences () {
-      this.$store.dispatch('getDependences')
+      this.$store.dispatch('dependence/getDependences')
     }
   }
 }
