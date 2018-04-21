@@ -13,5 +13,15 @@ export default new Vuex.Store({
   modules: {
     user,
     dependence
+  },
+  mutations: {
+    ADD_DATATABLE (state, data) {
+      state.datatable = data
+    }
+  },
+  actions: {
+    addDatatable ({dispatch, commit, state}, data) {
+      commit('ADD_DATATABLE', data)
+    }
   }
 })

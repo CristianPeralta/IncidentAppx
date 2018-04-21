@@ -64,9 +64,6 @@ export const logout = ({dispatch, commit, state}) => {
   commit('LOGOUT')
   router.push({name: 'Login'})
 }
-export const addDatatable = ({dispatch, commit, state}, data) => {
-  commit('ADD_DATATABLE', data)
-}
 export const getSolicitudes = ({commit, getters}) => {
   commit('GET_SOLICITUDES')
 }
