@@ -1,4 +1,7 @@
 export default = {
+  allUsers: [],
   user: {},
-  userDraft: {}
+  users: [],
+  userDraft: {},
+  solicitudes: []
 }

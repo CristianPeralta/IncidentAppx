@@ -2,10 +2,6 @@ export const ADD_USER = (state, user) => {
   localStorage.setItem('user', JSON.stringify(user))
   state.user = user
 }
-export const ADD_USER = (state, user) => {
-  localStorage.setItem('user', JSON.stringify(user))
-  state.user = user
-}
 export const ADD_USERS = (state, users) => {
   state.allUsers = users
   users.map((el, index) => {
@@ -15,6 +11,13 @@ export const ADD_USERS = (state, users) => {
     }
   })
 }
+export const EDIT_USER = (state, data) => {
+  state.userDraft = data
+}
+export const LOGOUT = (state) => {
+  localStorage.removeItem('user')
+  state.user = {}
+}
 export const GET_SOLICITUDES = (state) => {
   state.solicitudes = []
   state.allUsers.map((el) => {
@@ -22,11 +25,4 @@ export const GET_SOLICITUDES = (state) => {
       state.solicitudes.push(el)
     }
   })
-}
-export const EDIT_USER = (state, data) => {
-  state.userDraft = data
-}
-export const LOGOUT = (state) => {
-  localStorage.removeItem('user')
-  state.user = {}
 }
