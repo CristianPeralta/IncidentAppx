@@ -8,6 +8,7 @@
       </header>
       <section class="modal-card-body">
         <!-- Content ... -->
+        <slot></slot>
       </section>
       <footer class="modal-card-foot">
         <button class="button is-success">Save changes</button>

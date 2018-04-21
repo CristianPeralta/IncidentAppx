@@ -44,7 +44,9 @@
           filterable: ['name', 'acronym', 'annex']
         }"></DataTable>
         <!-- END CONTENT -->
-        <Modal :active="modalActive" :title="datatable"></Modal>
+        <Modal :active="modalActive" :title="datatable">
+          <Form></Form>
+        </Modal>
       </div>
     </div>
   </div>
@@ -58,6 +60,7 @@ import TheFooter from './utils/TheFooter'
 import SubNav from './utils/SubNav'
 import DataTable from './DataTable'
 import Modal from './Modal'
+import Form from './Forms/DependenceForm'
 
 export default {
   name: 'Home',
@@ -67,7 +70,8 @@ export default {
     SubNav,
     DataTable,
     TheFooter,
-    Modal
+    Modal,
+    Form
   },
   mounted () {
     this.getUser()
