@@ -19,7 +19,8 @@ export const updateDependence = ({dispatch, commit, state}, form, index) => {
 }
 
 export const getDependences = ({dispatch, commit, state}) => {
-  Api.getDependences().then(({data}) => {
+  return Api.getDependences().then(({data}) => {
+    console.log('getting dependences')
     commit('ADD_DEPENDENCE', data)
   })
 }

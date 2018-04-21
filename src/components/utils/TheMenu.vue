@@ -54,15 +54,19 @@ export default {
   },
   methods: {
     showUsers () {
-      this.$store.dispatch('addDatatable', 'users')
+      this.$store.dispatch('user/getUsers').then(() => {
+        this.$store.dispatch('addDatatable', 'users')
+      })
     },
     showDependences () {
-      this.$store.dispatch('dependence/getDependences')
-      this.$store.dispatch('addDatatable', 'dependences')
+      this.$store.dispatch('dependence/getDependences').then(() => {
+        this.$store.dispatch('addDatatable', 'dependences')
+      })
     },
     showSolicitudes () {
-      this.$store.dispatch('user/getSolicitudes')
-      this.$store.dispatch('addDatatable', 'solicitudes')
+      this.$store.dispatch('user/getSolicitudes').then(() => {
+        this.$store.dispatch('addDatatable', 'solicitudes')
+      })
     }
   }
 }

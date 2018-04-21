@@ -65,5 +65,8 @@ export const logout = ({dispatch, commit, state}) => {
   router.push({name: 'Login'})
 }
 export const getSolicitudes = ({commit, getters}) => {
-  commit('GET_SOLICITUDES')
+  return new Promise(resolve => {
+    commit('GET_SOLICITUDES')
+    resolve()
+  })
 }
