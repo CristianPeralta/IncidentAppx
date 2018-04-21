@@ -46,7 +46,8 @@
         <!-- END CONTENT -->
         <Modal :active="modalActive" :title="datatable">
           <!-- <Form></Form> -->
-          <UserForm></UserForm>
+          <UserForm v-if="datatable == 'users'"></UserForm>
+          <DependenceForm v-if="datatable == 'dependences'"></DependenceForm>
         </Modal>
       </div>
     </div>
@@ -61,7 +62,7 @@ import TheFooter from './utils/TheFooter'
 import SubNav from './utils/SubNav'
 import DataTable from './DataTable'
 import Modal from './Modal'
-import Form from './Forms/DependenceForm'
+import DependenceForm from './Forms/DependenceForm'
 import UserForm from './Forms/UserForm'
 
 export default {
@@ -73,7 +74,7 @@ export default {
     DataTable,
     TheFooter,
     Modal,
-    Form,
+    DependenceForm,
     UserForm
   },
   mounted () {
