@@ -45,15 +45,10 @@
         </div>
       </div>
     </div>
-    <Modal :active="profileActive" title="User Profile">
-      <Profile></Profile>
-    </Modal>
   </nav>
 </template>
 
 <script>
-import Modal from '../Modal'
-import Profile from '../Profile'
 
 export default {
   name: 'TheNav',
@@ -68,16 +63,13 @@ export default {
       return JSON.parse(this.$store.getters['user/user'])
     }
   },
-  components: {
-    Modal,
-    Profile
-  },
   methods: {
     changeStatus () {
       this.isActive = !this.isActive
     },
     profileStatus () {
-      this.profileActive = !this.profileActive
+      this.$store.dispatch('addDatatable', 'User Profile')
+      this.$emit('showprofile')
     },
     logout () {
       this.$store.dispatch('user/logout')

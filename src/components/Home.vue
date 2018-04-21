@@ -2,7 +2,7 @@
   <body>
 
   <!-- START NAV -->
-  <TheNav></TheNav>
+  <TheNav @showprofile="showprofile"></TheNav>
   <!-- END NAV -->
   <div class="container">
     <div class="columns">
@@ -48,6 +48,7 @@
           <!-- <Form></Form> -->
           <UserForm v-if="datatable == 'users'"></UserForm>
           <DependenceForm v-if="datatable == 'dependences'"></DependenceForm>
+          <Profile></Profile>
         </Modal>
       </div>
     </div>
@@ -64,6 +65,7 @@ import DataTable from './DataTable'
 import Modal from './Modal'
 import DependenceForm from './Forms/DependenceForm'
 import UserForm from './Forms/UserForm'
+import Profile from './Profile'
 
 export default {
   name: 'Home',
@@ -74,6 +76,7 @@ export default {
     DataTable,
     TheFooter,
     Modal,
+    Profile,
     DependenceForm,
     UserForm
   },
@@ -83,7 +86,8 @@ export default {
   data () {
     return {
       text: 'OSIS!',
-      modalActive: false
+      modalActive: false,
+      profileActive: false
     }
   },
   computed: {
@@ -111,6 +115,10 @@ export default {
       console.log(id)
     },
     changeModal () {
+      this.modalActive = !this.modalActive
+    },
+    showprofile () {
+      this.profileActive = !this.profileActive
       this.modalActive = !this.modalActive
     }
   }
