@@ -2,7 +2,8 @@ export const ADD_USER = (state, user) => {
   localStorage.setItem('user', JSON.stringify(user))
   state.user = user
 }
-export const ADD_USERS = (state, users) => {
+export const GET_USERS = (state, users) => {
+  state.users = []
   state.allUsers = users
   users.map((el, index) => {
     if (el.status === 'true') {

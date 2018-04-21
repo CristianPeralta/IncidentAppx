@@ -1,5 +1,9 @@
 export const id = state => state.user._id
 
+export const users = state => state.users
+
+export const solicitudes = state => state.solicitudes
+
 export const fullName = state => {
   return state.user.name + state.user.lastname
 }

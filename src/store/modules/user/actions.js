@@ -12,7 +12,7 @@ export const getUser = ({commit, getters}) => {
 }
 export const getUsers = ({commit, getters}) => {
   return ApiServices.users().then(({data}) => {
-    commit('ADD_USERS', data)
+    commit('GET_USERS', data)
   })
 }
 export const editUser = ({dispatch, commit, state}) => {
@@ -49,8 +49,8 @@ export const updateDependence = ({dispatch, commit, state}, form, index) => {
   })
 }
 export const getDependences = ({dispatch, commit, state}) => {
-  ApiServices.getDependences().then(({data}) => {
-    commit('GET_DEPENDENCES', data, { root: true })
+  return ApiServices.getDependences().then(({data}) => {
+    commit('GET_DEPENDENCES', data)
   })
 }
 export const login = ({dispatch, commit, state}, form) => {

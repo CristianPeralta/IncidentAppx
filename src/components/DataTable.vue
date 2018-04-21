@@ -1,24 +1,13 @@
 <template lang='html'>
     <v-client-table :columns='columnsD' :data='dataD' :options='optionsD'>
-      <a slot='uri' slot-scope='props' target='_blank' :href='props.row.dependence.acronym' class='glyphicon glyphicon-eye-open'></a>
-
-      <div slot='child_row' slot-scope='props'>
-        The link to {{props.row.name}} is <a :href='props.row.dependence.acronym'>{{props.row.dependence.acronym}}</a>
-      </div>
     </v-client-table>
 </template>
 
 <script>
-import edit from './edit'
-import remove from './delete'
 
 export default {
   name: 'DataTable',
-  props: ['columnsD', 'dataD', 'optionsD'],
-  templates: {
-    edit,
-    remove
-  }
+  props: ['columnsD', 'dataD', 'optionsD']
 }
 </script>
 

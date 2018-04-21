@@ -79,9 +79,6 @@ export default {
   mounted () {
     this.getUser()
   },
-  created () {
-    this.getUsers()
-  },
   data () {
     return {
       text: 'OSIS!',
@@ -90,13 +87,13 @@ export default {
   },
   computed: {
     allUsers () {
-      return this.$store.state['user/users']
+      return this.$store.getters['user/users']
     },
     allDependences () {
-      return this.$store.state['dependence/dependences']
+      return this.$store.getters['dependence/dependences']
     },
     allSolicitudes () {
-      return this.$store.state['user/solicitudes']
+      return this.$store.getters['user/solicitudes']
     },
     datatable () {
       return this.$store.state.datatable
