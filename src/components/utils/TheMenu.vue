@@ -43,13 +43,16 @@ export default {
   name: 'TheMenu',
   computed: {
     getRole () {
-      return this.$store.getters['user/role']
+      return true
+      // return this.$store.getters['user/role']
     },
     isAdmin () {
-      return this.$store.getters['user/isAdmin']
+      return true
+      // return this.$store.getters['user/isAdmin']
     },
     isTechnician () {
-      return this.$store.getters['user/isTechnician']
+      return true
+      // return this.$store.getters['user/isTechnician']
     }
   },
   methods: {

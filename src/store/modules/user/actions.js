@@ -55,7 +55,8 @@ export const getDependences = ({dispatch, commit, state}) => {
 }
 export const login = ({dispatch, commit, state}, form) => {
   return ApiServices.login(form).then(({data}) => {
-    commit('ADD_USER', data)
+    console.log(data)
+    commit('ADD_TOKEN', data)
   }).then(() => {
     router.push({name: 'Home'})
   })

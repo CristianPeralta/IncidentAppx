@@ -89,9 +89,25 @@
 <script>
 export default {
   name: 'Profile',
+  data () {
+    return {
+      user: {
+        name: 'Albert',
+        lastname: 'Smith',
+        dni: '272623762',
+        cellphone: '0517266672',
+        role: 'admin',
+        email: 'albertmith@example.com',
+        dependence: {
+          name: 'System Office',
+          acronym: 'OSYS'
+        }
+      }
+    }
+  },
   computed: {
-    user () {
-      return JSON.parse(this.$store.getters['user/user'])
+    userD () {
+      return this.$store.getters['user/user']
     }
   }
 }

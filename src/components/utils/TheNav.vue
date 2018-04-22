@@ -30,7 +30,7 @@
         <div class="navbar-end">
           <div class="navbar-item has-dropdown" :class="{'is-active': isActive}">
             <a class="navbar-link" @click="changeStatus">
-              {{user.name}}
+              <!-- {{user.name}} -->
             </a>
             <div class="navbar-dropdown is-right">
               <a @click="profileStatus" class="navbar-item">
