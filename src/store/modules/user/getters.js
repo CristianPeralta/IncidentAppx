@@ -7,6 +7,11 @@ export const solicitudes = state => state.solicitudes
 export const user = (state) => {
   return localStorage.getItem('user')
 }
+
+export const token = (state) => {
+  return localStorage.getItem('token')
+}
+
 export const isOnline = (state, getters) => {
   console.log(getters.user)
   return getters.user
