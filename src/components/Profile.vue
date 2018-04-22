@@ -88,20 +88,10 @@
 
 <script>
 export default {
-  data () {
-    return {
-      user: {
-        name: 'Albert',
-        lastname: 'Smith',
-        dni: '272623762',
-        cellphone: '0517266672',
-        role: 'admin',
-        email: 'albertmith@example.com',
-        dependence: {
-          name: 'System Office',
-          acronym: 'OSYS'
-        }
-      }
+  name: 'Profile',
+  computed: {
+    user () {
+      return JSON.parse(this.$store.getters['user/user'])
     }
   }
 }
