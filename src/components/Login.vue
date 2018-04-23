@@ -39,7 +39,7 @@
 export default {
   name: 'Login',
   created () {
-    this.getUser()
+    // this.getUser()
   },
   data () {
     return {

@@ -21,6 +21,7 @@ export const EDIT_USER = (state, data) => {
 export const LOGOUT = (state) => {
   localStorage.removeItem('token')
   state.token = {}
+  state.user = {}
 }
 export const GET_SOLICITUDES = (state) => {
   state.solicitudes = []
