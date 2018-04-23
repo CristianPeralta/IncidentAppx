@@ -2,6 +2,9 @@ export const ADD_TOKEN = (state, token) => {
   localStorage.setItem('token', JSON.stringify(token))
   state.token = token
 }
+export const ADD_USER = (state, user) => {
+  state.user = user
+}
 export const GET_USERS = (state, users) => {
   state.users = []
   state.allUsers = users

@@ -8,7 +8,11 @@ export const signup = ({commit}, form) => {
   })
 }
 export const getUser = ({commit, getters}) => {
-  getters.isOnline ? router.push({name: 'Home'}) : router.push({name: 'Login'})
+  ApiServices.me().then(({data}) => {
+    commit('ADD_USER', data)
+  }).then(() => {
+    getters.isOnline ? router.push({name: 'Home'}) : router.push({name: 'Login'})
+  })
 }
 export const getUsers = ({commit, getters}) => {
   return ApiServices.users().then(({data}) => {
@@ -58,7 +62,7 @@ export const login = ({dispatch, commit, state}, form) => {
     console.log(data)
     commit('ADD_TOKEN', data)
   }).then(() => {
-    router.push({name: 'Home'})
+    dispatch('getUser')
   })
 }
 export const logout = ({dispatch, commit, state}) => {

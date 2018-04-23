@@ -18,6 +18,9 @@ export default {
   users () {
     return Api().get('users', token)
   },
+  me () {
+    return Api().get('users/me', token)
+  },
   logout () {
     return Api().post('logout')
   },

@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     user () {
-      return JSON.parse(this.$store.getters['user/user'])
+      return this.$store.getters['user/user']
     }
   },
   methods: {
