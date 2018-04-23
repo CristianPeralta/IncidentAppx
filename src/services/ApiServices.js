@@ -2,9 +2,11 @@ import Api from '../source/Api'
 
 let token = {
   headers: {
-    'x-access-token': localStorage.getItem('token')
+    'x-access-token': JSON.parse(localStorage.getItem('token'))
   }
 }
+
+console.log(token)
 
 export default {
   signup (params) {

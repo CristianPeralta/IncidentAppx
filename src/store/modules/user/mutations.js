@@ -1,5 +1,5 @@
 export const ADD_TOKEN = (state, token) => {
-  localStorage.setItem('token', token)
+  localStorage.setItem('token', JSON.stringify(token))
   state.token = token
 }
 export const GET_USERS = (state, users) => {
@@ -16,8 +16,8 @@ export const EDIT_USER = (state, data) => {
   state.userDraft = data
 }
 export const LOGOUT = (state) => {
-  localStorage.removeItem('user')
-  state.user = {}
+  localStorage.removeItem('token')
+  state.token = {}
 }
 export const GET_SOLICITUDES = (state) => {
   state.solicitudes = []

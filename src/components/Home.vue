@@ -11,7 +11,7 @@
         <SubNav></SubNav>
         <a @click="changeModal" class="button is-link">Nuevo</a>
         <!-- START CONTENT -->
-        <!-- <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role', 'edit']" :dataD="allUsers" :optionsD="{
+        <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role', 'edit']" :dataD="allUsers" :optionsD="{
           headings: {
             'name': 'Name',
             'email': 'Email',
@@ -32,7 +32,7 @@
           },
           sortable: ['name', 'email', 'role'],
           filterable: ['name', 'email', 'role']
-        }"></DataTable> -->
+        }"></DataTable>
 
         <DataTable v-if="datatable == 'dependences'" :columnsD="['name', 'acronym', 'annex']" :dataD="allDependences" :optionsD="{
           headings: {

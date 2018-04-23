@@ -13,8 +13,8 @@ export const token = (state) => {
 }
 
 export const isOnline = (state, getters) => {
-  console.log(getters.user)
-  return getters.user
+  console.log(getters.token)
+  return getters.token
 }
 // export const isAdmin = (state, getters) => {
 //   return (JSON.parse(getters.user).role === 'admin') && (JSON.parse(getters.user).status)
