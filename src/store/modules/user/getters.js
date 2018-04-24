@@ -7,10 +7,14 @@ export const user = state => state.user
 export const solicitudes = state => state.solicitudes
 
 export const token = (state) => {
-  return localStorage.getItem('token')
+  return {
+    headers: {
+      'x-access-token': localStorage.getItem('token')
+    }
+  }
 }
 export const isOnline = (state, getters) => {
-  return !!getters.user
+  return !!getters.token
 }
 export const isAdmin = (state, getters) => {
   return (state.user.role === 'admin') && (state.user.status)

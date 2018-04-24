@@ -1,13 +1,5 @@
 import Api from '../source/Api'
 
-let token = {
-  headers: {
-    'x-access-token': JSON.parse(localStorage.getItem('token'))
-  }
-}
-
-console.log(token)
-
 export default {
   signup (params) {
     return Api().post('users', params)
@@ -15,16 +7,16 @@ export default {
   login (params) {
     return Api().post('login', params)
   },
-  users () {
+  users (token) {
     return Api().get('users', token)
   },
-  me () {
+  me (token) {
     return Api().get('users/me', token)
   },
   logout () {
     return Api().post('logout')
   },
-  newDependence (params) {
+  newDependence (params, token) {
     return Api().post('dependences', params, {
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -33,18 +25,18 @@ export default {
     })
   },
   getDependences () {
-    return Api().get('dependences', token)
+    return Api().get('dependences')
   },
-  editUser (id) {
+  editUser (id, token) {
     return Api().get(`users/${id}`, token)
   },
-  updateUser (id, params) {
+  updateUser (id, params, token) {
     return Api().put(`users/${id}`, params, token)
   },
-  editDependence (id) {
+  editDependence (id, token) {
     return Api().get(`dependences/${id}`, token)
   },
-  updateDependence (id, params) {
+  updateDependence (id, params, token) {
     return Api().put(`dependences/${id}`, params, token)
   }
 }

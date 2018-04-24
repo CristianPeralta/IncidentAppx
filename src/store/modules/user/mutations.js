@@ -1,5 +1,5 @@
 export const ADD_TOKEN = (state, token) => {
-  localStorage.setItem('token', JSON.stringify(token))
+  localStorage.setItem('token', token)
   state.token = token
 }
 export const ADD_USER = (state, user) => {

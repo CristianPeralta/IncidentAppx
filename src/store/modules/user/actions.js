@@ -8,28 +8,32 @@ export const signup = ({commit}, form) => {
   })
 }
 export const getUser = ({commit, getters}) => {
-  ApiServices.me().then(({data}) => {
-    commit('ADD_USER', data)
-  }).then(() => {
-    getters.isOnline ? router.push({name: 'Home'}) : router.push({name: 'Login'})
-  })
+  if (!getters.isOnline) {
+    router.push({name: 'Login'})
+  } else {
+    ApiServices.me(getters.token).then(({data}) => {
+      commit('ADD_USER', data)
+    }).then(() => {
+      router.push({name: 'Home'})
+    })
+  }
 }
 export const getUsers = ({commit, getters}) => {
-  return ApiServices.users().then(({data}) => {
+  return ApiServices.users(getters.token).then(({data}) => {
     commit('GET_USERS', data)
   })
 }
-export const editUser = ({dispatch, commit, state}) => {
-  ApiServices.editUser(state.user._id).then(({data}) => {
+export const editUser = ({commit, getters, state}) => {
+  ApiServices.editUser(state.user._id, getters.token).then(({data}) => {
     commit('EDIT_USER', data)
   })
 }
-export const updateUser = ({dispatch, commit, state}, form) => {
-  ApiServices.updateUser(form).then(({data}) => {
+export const updateUser = ({commit, getters}, form) => {
+  ApiServices.updateUser(form, getters.token).then(({data}) => {
     commit('ADD_USER', data)
   })
 }
-export const newDependence = ({dispatch, commit, state}, form) => {
+export const newDependence = ({commit, getters}, form) => {
   let formData = new FormData()
   formData.append('name', form.name)
   formData.append('acronym', form.acronym)
@@ -38,21 +42,21 @@ export const newDependence = ({dispatch, commit, state}, form) => {
   formData.append('longitude', form.longitude)
   formData.append('photo', form.photo)
 
-  ApiServices.newDependence(formData).then(({data}) => {
+  ApiServices.newDependence(formData, getters.token).then(({data}) => {
     commit('ADD_DEPENDENCE', data)
   })
 }
-export const editDependence = ({dispatch, commit, state}, id, index) => {
-  ApiServices.editDependence(id).then(({data}) => {
+export const editDependence = ({commit, getters}, id, index) => {
+  ApiServices.editDependence(id, getters.token).then(({data}) => {
     commit('EDIT_DEPENDENCE', data, index)
   })
 }
-export const updateDependence = ({dispatch, commit, state}, form, index) => {
-  ApiServices.updateDependence(form).then(({data}) => {
+export const updateDependence = ({commit, getters}, form, index) => {
+  ApiServices.updateDependence(form, getters.token).then(({data}) => {
     commit('UPDATE_DEPENDENCE', data, index)
   })
 }
-export const getDependences = ({dispatch, commit, state}) => {
+export const getDependences = ({commit}) => {
   return ApiServices.getDependences().then(({data}) => {
     commit('GET_DEPENDENCES', data)
   })
