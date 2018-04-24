@@ -8,8 +8,8 @@
     <div class="columns">
       <TheMenu></TheMenu>
       <div class="column is-9">
-        <SubNav></SubNav>
-        <a @click="changeModal" class="button is-link">Nuevo</a>
+        <!-- <SubNav></SubNav> -->
+        <a @click="changeModal" v-if="datatable" class="button is-link">Nuevo</a>
         <!-- START CONTENT -->
         <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role', 'edit']" :dataD="allUsers" :optionsD="{
           headings: {
@@ -48,7 +48,7 @@
           <!-- <Form></Form> -->
           <UserForm v-if="datatable == 'users'"></UserForm>
           <DependenceForm v-if="datatable == 'dependences'"></DependenceForm>
-          <Profile v-if="modalActive"></Profile>
+          <Profile v-if="datatable == 'User Profile'"></Profile>
         </Modal>
       </div>
     </div>
