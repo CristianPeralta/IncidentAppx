@@ -9,7 +9,7 @@
       <TheMenu></TheMenu>
       <div class="column is-9">
         <!-- <SubNav></SubNav> -->
-        <a @click="changeModal" v-if="datatable" class="button is-link">Nuevo</a>
+        <a @click="changeModal" v-if="datatable" class="button is-link">New</a>
         <!-- START CONTENT -->
         <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role', 'edit']" :dataD="allUsers" :optionsD="{
           headings: {
