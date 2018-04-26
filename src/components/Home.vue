@@ -11,7 +11,7 @@
         <!-- <SubNav></SubNav> -->
         <a @click="changeModal" v-if="datatable" class="button is-link">New</a>
         <!-- START CONTENT -->
-        <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role', 'edit']" :dataD="allUsers" :optionsD="{
+        <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role', 'actions']" :dataD="allUsers" :optionsD="{
           headings: {
             'name': 'Name',
             'email': 'Email',
@@ -24,7 +24,7 @@
            <a slot="edit" slot-scope="props" class="fa fa-edit" :href="showItem(props.row.id)">Editarr</a>
         </DataTable>
 
-        <DataTable v-if="datatable == 'solicitudes'" :columnsD="['name', 'email', 'role']" :dataD="allSolicitudes" :optionsD="{
+        <DataTable v-if="datatable == 'solicitudes'" :columnsD="['name', 'email', 'role', 'actions']" :dataD="allSolicitudes" :optionsD="{
           headings: {
             'name': 'Name',
             'email': 'Email',
@@ -34,7 +34,7 @@
           filterable: ['name', 'email', 'role']
         }"></DataTable>
 
-        <DataTable v-if="datatable == 'dependences'" :columnsD="['name', 'acronym', 'annex']" :dataD="allDependences" :optionsD="{
+        <DataTable v-if="datatable == 'dependences'" :columnsD="['name', 'acronym', 'annex', 'actions']" :dataD="allDependences" :optionsD="{
           headings: {
             'name': 'Name',
             'acronym': 'Acronym',

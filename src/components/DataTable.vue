@@ -1,5 +1,9 @@
 <template lang='html'>
     <v-client-table :columns='columnsD' :data='dataD' :options='optionsD'>
+      <template slot="actions" slot-scope="props">
+        <a class="fa fa-edit" @click="edit(props.row._id)"></a>
+        <a class="fa fa-remove" @click="remove(props.row._id)"></a>
+      </template>
     </v-client-table>
 </template>
 
@@ -7,7 +11,15 @@
 
 export default {
   name: 'DataTable',
-  props: ['columnsD', 'dataD', 'optionsD']
+  props: ['columnsD', 'dataD', 'optionsD'],
+  methods: {
+    edit (id) {
+      alert(id)
+    },
+    remove (id) {
+      alert(id)
+    }
+  }
 }
 </script>
 
