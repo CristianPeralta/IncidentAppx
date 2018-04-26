@@ -53,6 +53,7 @@
 
 <script>
 export default {
+  props: ['data', 'index'],
   data () {
     return {
       form: {
@@ -69,6 +70,11 @@ export default {
   },
   created () {
     this.getDependences()
+  },
+  watch: {
+    data () {
+      this.$store.dispatch('dependence/editDependence', this.data, this.index)
+    }
   },
   methods: {
     sendForm () {
