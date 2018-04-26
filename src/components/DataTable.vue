@@ -1,23 +1,43 @@
 <template lang='html'>
+  <div class="">
     <v-client-table :columns='columnsD' :data='dataD' :options='optionsD'>
       <template slot="actions" slot-scope="props">
         <a class="fa fa-edit" @click="edit(props.row._id)"></a>
         <a class="fa fa-remove" @click="remove(props.row._id)"></a>
       </template>
     </v-client-table>
+    <Modal :active="modalActive" :title="datatable">
+      <!-- <Form></Form> -->
+      <UserForm v-if="datatable == 'users'"></UserForm>
+      <DependenceForm v-if="datatable == 'dependences'"></DependenceForm>
+    </Modal>
+  </div>
 </template>
 
 <script>
-
+import Modal from './Modal'
 export default {
   name: 'DataTable',
   props: ['columnsD', 'dataD', 'optionsD'],
+  data () {
+    return {
+      modalActive: false
+    }
+  },
+  components: {
+    Modal
+  },
+  computed: {
+    datatable () {
+      return this.$store.state.datatables
+    }
+  },
   methods: {
     edit (id) {
-      alert(id)
+      this.modalActive = !this.modalActive
     },
     remove (id) {
-      alert(id)
+      this.modalActive = !this.modalActive
     }
   }
 }
