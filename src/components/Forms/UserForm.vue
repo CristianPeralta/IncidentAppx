@@ -60,6 +60,7 @@
 <script>
 export default {
   name: 'SignUp',
+  props: ['data', 'index'],
   data () {
     return {
       form: {
@@ -80,6 +81,11 @@ export default {
   computed: {
     allDependences () {
       return this.$store.state['dependence/dependences']
+    }
+  },
+  watch: {
+    data () {
+      this.$store.dispatch('user/editUser', this.data, this.index)
     }
   },
   methods: {

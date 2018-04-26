@@ -8,8 +8,8 @@
     </v-client-table>
     <Modal :active="modalActive" :title="datatable">
       <!-- <Form></Form> -->
-      <UserForm v-if="datatable == 'users'"></UserForm>
-      <DependenceForm v-if="datatable == 'dependences'"></DependenceForm>
+      <UserForm :data="id" :index="index" v-if="datatable == 'users'"></UserForm>
+      <DependenceForm :data="id" :index="index" v-if="datatable == 'dependences'"></DependenceForm>
     </Modal>
   </div>
 </template>
@@ -24,7 +24,9 @@ export default {
   props: ['columnsD', 'dataD', 'optionsD'],
   data () {
     return {
-      modalActive: false
+      modalActive: false,
+      id: '',
+      index: 0
     }
   },
   components: {
@@ -40,9 +42,11 @@ export default {
   methods: {
     edit (id) {
       this.modalActive = !this.modalActive
+      this.id = id
     },
     remove (id) {
       this.modalActive = !this.modalActive
+      this.id = id
     }
   }
 }
