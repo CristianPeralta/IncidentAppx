@@ -16,6 +16,9 @@
 
 <script>
 import Modal from './Modal'
+import DependenceForm from './Forms/DependenceForm'
+import UserForm from './Forms/UserForm'
+
 export default {
   name: 'DataTable',
   props: ['columnsD', 'dataD', 'optionsD'],
@@ -25,11 +28,13 @@ export default {
     }
   },
   components: {
-    Modal
+    Modal,
+    UserForm,
+    DependenceForm
   },
   computed: {
     datatable () {
-      return this.$store.state.datatables
+      return this.$store.state.datatable
     }
   },
   methods: {
