@@ -23,14 +23,14 @@ export const getUsers = ({commit, getters}) => {
     commit('GET_USERS', data)
   })
 }
-export const editUser = ({commit, getters, state}) => {
-  ApiServices.editUser(state.user._id, getters.token).then(({data}) => {
-    commit('EDIT_USER', data)
+export const editUser = ({commit, getters, state}, id, index) => {
+  ApiServices.editUser(id, getters.token).then(({data}) => {
+    commit('EDIT_USER', data, index)
   })
 }
 export const updateUser = ({commit, getters}, form) => {
   ApiServices.updateUser(form, getters.token).then(({data}) => {
-    commit('ADD_USER', data)
+    commit('ADD_USER', data, state.userIndex)
   })
 }
 export const newDependence = ({commit, getters}, form) => {

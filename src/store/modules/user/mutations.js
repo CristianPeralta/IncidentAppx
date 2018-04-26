@@ -15,8 +15,12 @@ export const GET_USERS = (state, users) => {
     }
   })
 }
-export const EDIT_USER = (state, data) => {
+export const EDIT_USER = (state, data, index) => {
   state.userDraft = data
+  state.userIndex = index
+}
+export const UPDATE_USER = (state, data, index) => {
+  state.users.splice(index, 1, data)
 }
 export const LOGOUT = (state) => {
   localStorage.removeItem('token')

@@ -12,9 +12,9 @@ export const editDependence = ({dispatch, commit, state}, id, index) => {
   })
 }
 
-export const updateDependence = ({dispatch, commit, state}, form, index) => {
+export const updateDependence = ({dispatch, commit, state}, form) => {
   Api.updateDependence(form).then(({data}) => {
-    commit('UPDATE_DEPENDENCE', data, index)
+    commit('UPDATE_DEPENDENCE', data, state.dependenceIndex)
   })
 }
 

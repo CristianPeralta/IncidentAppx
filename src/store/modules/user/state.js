@@ -4,5 +4,6 @@ export default {
   user: {},
   users: [],
   userDraft: {},
+  userIndex: 0,
   solicitudes: []
 }
