@@ -33,34 +33,6 @@ export const updateUser = ({commit, getters, state}, form) => {
     commit('ADD_USER', data, state.userIndex)
   })
 }
-export const newDependence = ({commit, getters}, form) => {
-  let formData = new FormData()
-  formData.append('name', form.name)
-  formData.append('acronym', form.acronym)
-  formData.append('annex', form.annex)
-  formData.append('latitude', form.latitude)
-  formData.append('longitude', form.longitude)
-  formData.append('photo', form.photo)
-
-  ApiServices.newDependence(formData, getters.token).then(({data}) => {
-    commit('ADD_DEPENDENCE', data)
-  })
-}
-export const editDependence = ({commit, getters}, id, index) => {
-  ApiServices.editDependence(id, getters.token).then(({data}) => {
-    commit('EDIT_DEPENDENCE', data, index)
-  })
-}
-export const updateDependence = ({commit, getters}, form, index) => {
-  ApiServices.updateDependence(form, getters.token).then(({data}) => {
-    commit('UPDATE_DEPENDENCE', data, index)
-  })
-}
-export const getDependences = ({commit}) => {
-  return ApiServices.getDependences().then(({data}) => {
-    commit('GET_DEPENDENCES', data)
-  })
-}
 export const login = ({dispatch, commit, state}, form) => {
   return ApiServices.login(form).then(({data}) => {
     commit('ADD_TOKEN', data)
