@@ -64,8 +64,6 @@ export const getDependences = ({commit}) => {
 export const login = ({dispatch, commit, state}, form) => {
   return ApiServices.login(form).then(({data}) => {
     commit('ADD_TOKEN', data)
-  }).then(() => {
-    dispatch('getUser')
   })
 }
 export const logout = ({dispatch, commit, state}) => {

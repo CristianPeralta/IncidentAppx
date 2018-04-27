@@ -12,7 +12,7 @@
         </div>
       </div>
       <div id="navMenu" class="navbar-menu">
-        <div class="navbar-start">
+        <!-- <div class="navbar-start">
           <a class="navbar-item" href="admin.html">
             Home
           </a>
@@ -25,7 +25,7 @@
           <a class="navbar-item" href="admin.html">
             Exceptions
           </a>
-        </div>
+        </div> -->
 
         <div class="navbar-end">
           <div class="navbar-item has-dropdown" :class="{'is-active': isActive}">
