@@ -2,8 +2,8 @@
   <div class="">
     <v-client-table :columns='columnsD' :data='dataD' :options='optionsD'>
       <template slot="actions" slot-scope="props">
-        <a class="fa fa-edit" @click="edit(props.row._id)"></a>
-        <a class="fa fa-remove" @click="remove(props.row._id)"></a>
+        <a class="fa fa-edit" @click="edit(props.row._id, props.index)"></a>
+        <a class="fa fa-remove" @click="remove(props.row._id, props.index)"></a>
       </template>
     </v-client-table>
     <Modal :active="modalActive" :title="datatable">
@@ -40,13 +40,15 @@ export default {
     }
   },
   methods: {
-    edit (id) {
+    edit (id, index) {
       this.modalActive = !this.modalActive
       this.id = id
+      this.index = index - 1
     },
-    remove (id) {
+    remove (id, index) {
       this.modalActive = !this.modalActive
       this.id = id
+      this.index = index - 1
     }
   }
 }
