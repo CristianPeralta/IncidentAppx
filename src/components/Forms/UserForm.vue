@@ -81,11 +81,18 @@ export default {
   computed: {
     allDependences () {
       return this.$store.state['dependence/dependences']
+    },
+    user () {
+      return this.$store.getters['user/userDraft']
     }
   },
   watch: {
     data () {
-      this.$store.dispatch('user/editUser', this.data, this.index)
+      this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
+        if (this.user) {
+          this.form = this.user
+        }
+      })
     }
   },
   methods: {

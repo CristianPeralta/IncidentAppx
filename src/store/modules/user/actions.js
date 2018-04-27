@@ -24,7 +24,7 @@ export const getUsers = ({commit, getters}) => {
   })
 }
 export const editUser = ({commit, getters, state}, id, index) => {
-  ApiServices.editUser(id, getters.token).then(({data}) => {
+  return ApiServices.editUser(id, getters.token).then(({data}) => {
     commit('EDIT_USER', data, index)
   })
 }

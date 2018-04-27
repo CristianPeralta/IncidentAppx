@@ -4,6 +4,8 @@ export const users = state => state.users
 
 export const user = state => state.user
 
+export const userDraft = state => state.userDraft
+
 export const solicitudes = state => state.solicitudes
 
 export const token = (state) => {
