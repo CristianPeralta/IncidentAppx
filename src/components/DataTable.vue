@@ -8,8 +8,8 @@
     </v-client-table>
     <Modal :title="datatable">
       <!-- <Form></Form> -->
-      <UserForm :data="id" :index="index" v-if="datatable == 'users'"></UserForm>
-      <DependenceForm :data="id" :index="index" v-if="datatable == 'dependences'"></DependenceForm>
+      <UserForm type="edit" :data="id" :index="index" v-if="datatable == 'users'"></UserForm>
+      <DependenceForm type="edit" :data="id" :index="index" v-if="datatable == 'dependences'"></DependenceForm>
     </Modal>
   </div>
 </template>

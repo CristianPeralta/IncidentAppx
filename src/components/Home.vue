@@ -45,8 +45,8 @@
         <!-- END CONTENT -->
         <Modal :title="datatable">
           <!-- <Form></Form> -->
-          <UserForm v-if="datatable == 'users'"></UserForm>
-          <DependenceForm v-if="datatable == 'dependences'"></DependenceForm>
+          <UserForm type="create" v-if="datatable == 'users'"></UserForm>
+          <DependenceForm type="create" v-if="datatable == 'dependences'"></DependenceForm>
           <Profile v-if="datatable == 'User Profile'"></Profile>
         </Modal>
       </div>

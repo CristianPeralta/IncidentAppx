@@ -63,7 +63,7 @@
 <script>
 export default {
   name: 'SignUp',
-  props: ['data', 'index'],
+  props: ['type', 'data', 'index'],
   data () {
     return {
       form: {
@@ -75,12 +75,12 @@ export default {
         dependence: '',
         password: ''
       },
-      type: 'create',
       passwordDraft: ''
     }
   },
   created () {
     this.getDependences()
+    this.checkType()
   },
   computed: {
     allDependences () {
@@ -88,17 +88,6 @@ export default {
     },
     user () {
       return this.$store.getters['user/userDraft']
-    }
-  },
-  watch: {
-    data () {
-      this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
-        if (this.user) {
-          this.form = this.user
-          console.log(this.form)
-          this.type = 'edit'
-        }
-      })
     }
   },
   methods: {
@@ -114,6 +103,15 @@ export default {
     },
     changeModal () {
       this.$store.dispatch('changeModal')
+    },
+    checkType () {
+      if (this.type === 'edit') {
+        this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
+          if (this.user) {
+            this.form = this.user
+          }
+        })
+      }
     }
   }
 }
