@@ -27,7 +27,7 @@ export default new Vuex.Store({
     addDatatable ({dispatch, commit, state}, data) {
       commit('ADD_DATATABLE', data)
     },
-    changeModla ({dispatch, commit, state}) {
+    changeModal ({dispatch, commit, state}) {
       commit('CHANGE_MODAL')
     }
   }

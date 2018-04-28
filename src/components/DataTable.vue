@@ -24,7 +24,6 @@ export default {
   props: ['columnsD', 'dataD', 'optionsD'],
   data () {
     return {
-      modalActive: false,
       id: '',
       index: 0
     }
@@ -41,14 +40,15 @@ export default {
   },
   methods: {
     edit (id, index) {
-      this.modalActive = !this.modalActive
       this.id = id
       this.index = index - 1
     },
     remove (id, index) {
-      this.modalActive = !this.modalActive
       this.id = id
       this.index = index - 1
+    },
+    changeModal () {
+      this.$store.dispatch('changeModal')
     }
   }
 }

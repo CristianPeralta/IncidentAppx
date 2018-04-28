@@ -3,7 +3,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title"><strong>{{title.toUpperCase()}}</strong></p>
+        <p @click="changeModal" class="modal-card-title"><strong>{{title.toUpperCase()}}</strong></p>
         <button @click="changeModal" class="delete" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
@@ -21,10 +21,6 @@
 <script>
 export default {
   props: {
-    active: {
-      default: false,
-      Type: Boolean
-    },
     title: {
       default: 'Title',
       Type: String
@@ -32,7 +28,12 @@ export default {
   },
   methods: {
     changeModal () {
-      this.$parent.modalActive = !this.$parent.modalActive
+      this.$store.dispatch('changeModal')
+    }
+  },
+  computed: {
+    active () {
+      return this.$store.state.modalActive
     }
   }
 }

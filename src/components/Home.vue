@@ -43,7 +43,7 @@
           filterable: ['name', 'acronym', 'annex']
         }"></DataTable>
         <!-- END CONTENT -->
-        <Modal :active="modalActive" :title="datatable">
+        <Modal :title="datatable">
           <!-- <Form></Form> -->
           <UserForm v-if="datatable == 'users'"></UserForm>
           <DependenceForm v-if="datatable == 'dependences'"></DependenceForm>
@@ -85,7 +85,6 @@ export default {
   data () {
     return {
       text: 'OSIS!',
-      modalActive: false,
       profileActive: false
     }
   },

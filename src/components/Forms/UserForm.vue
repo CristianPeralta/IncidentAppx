@@ -55,7 +55,7 @@
       <footer class="modal-card-foot">
         <button v-if="type == 'create'" @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Sign Me Up</button>
         <button v-if="type == 'edit'" @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Save</button>
-        <button class="button is-block is-large is-fullwidth">Cancel</button>
+        <button @click="changeModal" class="button is-block is-large is-fullwidth">Cancel</button>
       </footer>
   </div>
 </template>
@@ -110,6 +110,9 @@ export default {
     },
     getDependences () {
       this.$store.dispatch('dependence/getDependences')
+    },
+    changeModal () {
+      this.$store.dispatch('changeModal')
     }
   }
 }
