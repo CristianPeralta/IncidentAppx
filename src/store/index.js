@@ -8,7 +8,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    datatable: ''
+    datatable: '',
+    modalActive: false
   },
   modules: {
     user,
@@ -17,11 +18,17 @@ export default new Vuex.Store({
   mutations: {
     ADD_DATATABLE (state, data) {
       state.datatable = data
+    },
+    CHANGE_MODAL (state, data) {
+      state.modalActive = !state.modalActive
     }
   },
   actions: {
     addDatatable ({dispatch, commit, state}, data) {
       commit('ADD_DATATABLE', data)
+    },
+    changeModla ({dispatch, commit, state}) {
+      commit('CHANGE_MODAL')
     }
   }
 })
