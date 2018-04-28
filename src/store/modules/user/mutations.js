@@ -16,8 +16,9 @@ export const GET_USERS = (state, users) => {
   })
 }
 export const EDIT_USER = (state, data, index) => {
+  console.log('get user')
+  console.log(data)
   state.userDraft = data
-  state.userIndex = index
 }
 export const UPDATE_USER = (state, data, index) => {
   state.users.splice(index, 1, data)

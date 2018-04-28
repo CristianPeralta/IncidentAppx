@@ -113,7 +113,7 @@ export default {
       console.log(id)
     },
     changeModal () {
-      this.modalActive = !this.modalActive
+      this.$store.dispatch('changeModal')
     },
     showprofile () {
       this.profileActive = !this.profileActive

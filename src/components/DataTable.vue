@@ -6,7 +6,7 @@
         <a class="fa fa-remove" @click="remove(props.row._id, props.index)"></a>
       </template>
     </v-client-table>
-    <Modal :active="modalActive" :title="datatable">
+    <Modal :title="datatable">
       <!-- <Form></Form> -->
       <UserForm :data="id" :index="index" v-if="datatable == 'users'"></UserForm>
       <DependenceForm :data="id" :index="index" v-if="datatable == 'dependences'"></DependenceForm>
@@ -42,10 +42,12 @@ export default {
     edit (id, index) {
       this.id = id
       this.index = index - 1
+      this.changeModal()
     },
     remove (id, index) {
       this.id = id
       this.index = index - 1
+      this.changeModal()
     },
     changeModal () {
       this.$store.dispatch('changeModal')

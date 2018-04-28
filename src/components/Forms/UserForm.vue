@@ -95,6 +95,7 @@ export default {
       this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
         if (this.user) {
           this.form = this.user
+          console.log(this.form)
           this.type = 'edit'
         }
       })

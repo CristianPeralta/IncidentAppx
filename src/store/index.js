@@ -28,6 +28,7 @@ export default new Vuex.Store({
       commit('ADD_DATATABLE', data)
     },
     changeModal ({dispatch, commit, state}) {
+      console.log('peticion to change modal')
       commit('CHANGE_MODAL')
     }
   }
