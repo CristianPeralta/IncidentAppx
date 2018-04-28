@@ -1,8 +1,21 @@
 <template lang="html">
   <div class="box has-text-centered">
-      <figure class="avatar">
-       <img height="128" width="128" src='https://image.flaticon.com/icons/svg/179/179948.svg'>
-     </figure>
+    <figure class="avatar">
+      <img height="128" width="128" :src='preview'>
+      <div class="file is-centered">
+        <label class="file-label">
+          <input class="file-input" type="file" name="photo" @change="processFile($event)">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file…
+            </span>
+          </span>
+        </label>
+      </div>
+    </figure>
       <div class="field">
         <div class="control">
           <input class="input is-large" type="text" v-model="form.name" placeholder="Your Name" autofocus="">
@@ -62,20 +75,19 @@
 
 <script>
 export default {
-  name: 'SignUp',
-  props: ['type', 'data', 'index'],
+  name: 'IncidentForm',
   data () {
     return {
       form: {
-        name: '',
-        lastname: '',
-        dni: '',
-        email: '',
-        cellphone: '',
+        incident: '',
+        priority: '',
+        category: '',
+        photo: '',
+        client: '',
         dependence: '',
-        password: ''
+        registeredBy: ''
       },
-      passwordDraft: ''
+      preview: 'https://st3.depositphotos.com/5266903/12981/v/950/depositphotos_129812138-stock-illustration-management-office-flat-vector-icon.jpg'
     }
   },
   created () {
@@ -98,6 +110,10 @@ export default {
     }
     changeModal () {
       this.$store.dispatch('changeModal')
+    },
+    processFile (e) {
+      this.form.photo = e.target.files[0]
+      this.preview = URL.createObjectURL(e.target.files[0])
     }
   }
 }
