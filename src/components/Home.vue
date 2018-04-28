@@ -21,7 +21,6 @@
           sortable: ['name', 'email', 'role'],
           filterable: ['name', 'email', 'role']
         }">
-           <a slot="edit" slot-scope="props" class="fa fa-edit" :href="showItem(props.row.id)">Editarr</a>
         </DataTable>
 
         <DataTable v-if="datatable == 'solicitudes'" :columnsD="['name', 'email', 'role', 'actions']" :dataD="allSolicitudes" :optionsD="{

@@ -52,8 +52,10 @@
           <input class="input is-large" type="password" v-model="passwordDraft" placeholder="Confirm Password">
         </div>
       </div>
-
-      <button @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Sign Me Up</button>
+      <footer class="modal-card-foot">
+        <button v-if="type == 'create'" @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Sign Me Up</button>
+        <button v-if="type == 'edit'" @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Save</button>
+      </footer>
   </div>
 </template>
 
@@ -72,6 +74,7 @@ export default {
         dependence: '',
         password: ''
       },
+      type: 'create',
       passwordDraft: ''
     }
   },
@@ -80,7 +83,7 @@ export default {
   },
   computed: {
     allDependences () {
-      return this.$store.state['dependence/dependences']
+      return this.$store.getters['dependence/dependences']
     },
     user () {
       return this.$store.getters['user/userDraft']
@@ -91,6 +94,7 @@ export default {
       this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
         if (this.user) {
           this.form = this.user
+          this.type = 'edit'
         }
       })
     }
