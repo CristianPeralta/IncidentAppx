@@ -34,9 +34,6 @@ export default {
       action: 'create'
     }
   },
-  created () {
-    this.isModalDependence()
-  },
   components: {
     Modal,
     UserForm,
@@ -48,20 +45,6 @@ export default {
     }
   },
   methods: {
-    isModalUser () {
-      console.log("this.action !== ''")
-      console.log(this.action !== '')
-      console.log("this.datatable === 'users' || this.datatable === 'solicitudes'")
-      console.log(this.datatable === 'users' || this.datatable === 'solicitudes')
-      console.log('final : ')
-      console.log((this.action !== '') && (this.datatable === 'users' || this.datatable === 'solicitudes'))
-      return (this.action !== '') && (this.datatable === 'users' || this.datatable === 'solicitudes')
-    },
-    isModalDependence () {
-      console.log("this.action !== '' && this.datatable === 'dependences'")
-      console.log(this.action !== '' && this.datatable === 'dependences')
-      return this.action !== '' && this.datatable === 'dependences'
-    },
     create () {
       this.action = 'create'
       this.changeModal()

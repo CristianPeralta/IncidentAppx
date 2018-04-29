@@ -53,7 +53,7 @@
 
 <script>
 export default {
-  props: ['data', 'index'],
+  props: ['type', 'data', 'index'],
   data () {
     return {
       form: {
@@ -72,8 +72,28 @@ export default {
     this.getDependences()
   },
   watch: {
-    data () {
-      this.$store.dispatch('dependence/editDependence', this.data, this.index)
+    type (data) {
+      if (data === 'edit') {
+        this.$store.dispatch('dependence/editDependence', this.data, this.index).then(() => {
+          if (this.dependence) {
+            this.form = this.dependence
+          }
+        })
+      } else {
+        this.form = {
+          name: '',
+          acronym: '',
+          annex: '',
+          latitude: '',
+          longitude: '',
+          photo: ''
+        }
+      }
+    }
+  },
+  computed: {
+    dependence () {
+      return this.$store.getters['dependence/dependenceDraft']
     }
   },
   methods: {

@@ -7,7 +7,7 @@ export const newDependence = ({dispatch, commit, state}) => {
 }
 
 export const editDependence = ({dispatch, commit, state}, id, index) => {
-  Api.editDependence(id).then(({data}) => {
+  return Api.editDependence(id).then(({data}) => {
     commit('EDIT_DEPENDENCE', data, index)
   })
 }

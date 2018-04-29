@@ -4,3 +4,5 @@ export const getIds = state => {
 }
 
 export const dependences = state => state.dependences
+
+export const dependenceDraft = state => state.dependenceDraft
