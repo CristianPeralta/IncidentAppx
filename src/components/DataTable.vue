@@ -9,8 +9,12 @@
     </v-client-table>
     <Modal v-if="action !== ''" :title="datatable">
       <!-- <Form></Form> -->
-      <UserForm :type="action" :data="id" :index="index" v-if="isModalUser"></UserForm>
-      <DependenceForm :type="action" :data="id" :index="index" v-if="isModalDependence"></DependenceForm>
+      <template >
+        <UserForm v-if="datatable == 'users' || datatable == 'solicitudes'" :type="action" :data="id" :index="index"></UserForm>
+      </template>
+      <template >
+        <DependenceForm v-if="datatable == 'dependences'" :type="action" :data="id" :index="index" ></DependenceForm>
+      </template>
     </Modal>
   </div>
 </template>
@@ -31,7 +35,6 @@ export default {
     }
   },
   created () {
-    this.isModalUser()
     this.isModalDependence()
   },
   components: {
@@ -55,8 +58,9 @@ export default {
       return (this.action !== '') && (this.datatable === 'users' || this.datatable === 'solicitudes')
     },
     isModalDependence () {
-      // (this.action !== '') && this.datatable === 'dependences'
-      return false
+      console.log("this.action !== '' && this.datatable === 'dependences'")
+      console.log(this.action !== '' && this.datatable === 'dependences')
+      return this.action !== '' && this.datatable === 'dependences'
     },
     create () {
       this.action = 'create'
