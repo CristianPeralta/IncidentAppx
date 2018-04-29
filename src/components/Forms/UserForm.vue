@@ -62,7 +62,7 @@
 
 <script>
 export default {
-  name: 'SignUp',
+  name: 'UserForm',
   props: ['type', 'data', 'index'],
   data () {
     return {

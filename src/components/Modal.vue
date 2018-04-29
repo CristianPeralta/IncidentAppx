@@ -16,6 +16,7 @@
 
 <script>
 export default {
+  name: 'Modal',
   props: {
     title: {
       default: 'Title',

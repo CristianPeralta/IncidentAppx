@@ -1,5 +1,6 @@
 <template lang='html'>
   <div class="">
+    <a @click="create" v-if="datatable" class="button is-link">New</a>
     <v-client-table :columns='columnsD' :data='dataD' :options='optionsD'>
       <template slot="actions" slot-scope="props">
         <a class="fa fa-edit" @click="edit(props.row._id, props.index)"></a>
@@ -8,8 +9,8 @@
     </v-client-table>
     <Modal :title="datatable">
       <!-- <Form></Form> -->
-      <UserForm type="edit" :data="id" :index="index" v-if="datatable == 'users'"></UserForm>
-      <DependenceForm type="edit" :data="id" :index="index" v-if="datatable == 'dependences'"></DependenceForm>
+      <UserForm :type="action" :data="id" :index="index" v-if="datatable == 'users' || datatable == 'solicitudes'"></UserForm>
+      <DependenceForm :type="action" :data="id" :index="index" v-if="datatable == 'dependences'"></DependenceForm>
     </Modal>
   </div>
 </template>
@@ -25,7 +26,8 @@ export default {
   data () {
     return {
       id: '',
-      index: 0
+      index: 0,
+      action: ''
     }
   },
   components: {
@@ -39,14 +41,20 @@ export default {
     }
   },
   methods: {
+    create () {
+      this.action = 'create'
+      this.changeModal()
+    },
     edit (id, index) {
       this.id = id
-      this.index = index - 1
+      this.index = index
+      this.action = 'edit'
       this.changeModal()
     },
     remove (id, index) {
       this.id = id
-      this.index = index - 1
+      this.index = index
+      this.action = 'remove'
       this.changeModal()
     },
     changeModal () {

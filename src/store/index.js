@@ -29,7 +29,6 @@ export default new Vuex.Store({
     },
     changeModal ({dispatch, commit, state}) {
       console.log('peticion to change modal')
-      
       commit('CHANGE_MODAL')
     }
   }
