@@ -67,9 +67,12 @@ export default {
     changeStatus () {
       this.isActive = !this.isActive
     },
+    changeModal () {
+      this.$store.dispatch('changeModal')
+    },
     profileStatus () {
       this.$store.dispatch('addDatatable', 'User Profile')
-      this.$emit('showprofile')
+      this.changeModal()
     },
     logout () {
       this.$store.dispatch('user/logout')

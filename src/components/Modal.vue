@@ -10,10 +10,6 @@
         <!-- Content ... -->
         <slot></slot>
       </section>
-      <footer class="modal-card-foot">
-        <button class="button is-success">Save changes</button>
-        <button @click="changeModal" class="button">Cancel</button>
-      </footer>
     </div>
   </div>
 </template>
