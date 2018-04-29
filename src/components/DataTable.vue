@@ -27,7 +27,7 @@ export default {
     return {
       id: '',
       index: 0,
-      action: ''
+      action: 'create'
     }
   },
   created () {
@@ -63,15 +63,15 @@ export default {
       this.changeModal()
     },
     edit (id, index) {
+      this.action = 'edit'
       this.id = id
       this.index = index
-      this.action = 'edit'
       this.changeModal()
     },
     remove (id, index) {
+      this.action = 'remove'
       this.id = id
       this.index = index
-      this.action = 'remove'
       this.changeModal()
     },
     changeModal () {

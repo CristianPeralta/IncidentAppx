@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="box has-text-centered">
+    <div class="">
       <figure class="avatar">
        <img height="128" width="128" src='https://image.flaticon.com/icons/svg/179/179948.svg'>
      </figure>
@@ -41,17 +42,19 @@
         </div>
       </div>
 
-      <div class="field">
+      <div class="field" v-if="type == 'create'">
         <div class="control">
           <input class="input is-large" type="password" v-model="form.password" placeholder="Your Password">
         </div>
       </div>
 
-      <div class="field">
+      <div class="field" v-if="type == 'create'">
         <div class="control">
           <input class="input is-large" type="password" v-model="passwordDraft" placeholder="Confirm Password">
         </div>
       </div>
+    </div>
+
       <footer class="modal-card-foot">
         <button v-if="type == 'create'" @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Sign Me Up</button>
         <button v-if="type == 'edit'" @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Save</button>
