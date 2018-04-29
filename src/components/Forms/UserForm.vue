@@ -78,9 +78,29 @@ export default {
       passwordDraft: ''
     }
   },
+  watch: {
+    type (data) {
+      if (data === 'edit') {
+        this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
+          if (this.user) {
+            this.form = this.user
+          }
+        })
+      } else {
+        this.form = {
+          name: '',
+          lastname: '',
+          dni: '',
+          email: '',
+          cellphone: '',
+          dependence: '',
+          password: ''
+        }
+      }
+    }
+  },
   created () {
     this.getDependences()
-    this.checkType()
   },
   computed: {
     allDependences () {
@@ -103,15 +123,6 @@ export default {
     },
     changeModal () {
       this.$store.dispatch('changeModal')
-    },
-    checkType () {
-      if (this.type === 'edit') {
-        this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
-          if (this.user) {
-            this.form = this.user
-          }
-        })
-      }
     }
   }
 }

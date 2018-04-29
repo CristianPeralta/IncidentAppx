@@ -7,10 +7,10 @@
         <a class="fa fa-remove" @click="remove(props.row._id, props.index)"></a>
       </template>
     </v-client-table>
-    <Modal :title="datatable">
+    <Modal v-if="action !== ''" :title="datatable">
       <!-- <Form></Form> -->
-      <UserForm :type="action" :data="id" :index="index" v-if="datatable == 'users' || datatable == 'solicitudes'"></UserForm>
-      <DependenceForm :type="action" :data="id" :index="index" v-if="datatable == 'dependences'"></DependenceForm>
+      <UserForm :type="action" :data="id" :index="index" v-if="isModalUser"></UserForm>
+      <DependenceForm :type="action" :data="id" :index="index" v-if="isModalDependence"></DependenceForm>
     </Modal>
   </div>
 </template>
@@ -30,6 +30,10 @@ export default {
       action: ''
     }
   },
+  created () {
+    this.isModalUser()
+    this.isModalDependence()
+  },
   components: {
     Modal,
     UserForm,
@@ -41,6 +45,19 @@ export default {
     }
   },
   methods: {
+    isModalUser () {
+      console.log("this.action !== ''")
+      console.log(this.action !== '')
+      console.log("this.datatable === 'users' || this.datatable === 'solicitudes'")
+      console.log(this.datatable === 'users' || this.datatable === 'solicitudes')
+      console.log('final : ')
+      console.log((this.action !== '') && (this.datatable === 'users' || this.datatable === 'solicitudes'))
+      return (this.action !== '') && (this.datatable === 'users' || this.datatable === 'solicitudes')
+    },
+    isModalDependence () {
+      // (this.action !== '') && this.datatable === 'dependences'
+      return false
+    },
     create () {
       this.action = 'create'
       this.changeModal()
