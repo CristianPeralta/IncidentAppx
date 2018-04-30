@@ -5,3 +5,9 @@ export const newIncident = ({dispatch, commit, state}, form) => {
     commit('GET_INCIDENTS', data)
   })
 }
+
+export const getIncidents = ({dispatch, commit, state}) => {
+  return Api.getIncidents().then(({data}) => {
+    commit('ADD_INCIDENTS', data)
+  })
+}

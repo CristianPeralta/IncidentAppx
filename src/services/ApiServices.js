@@ -47,8 +47,8 @@ export default {
       }
     })
   },
-  getIncidents () {
-    return Api().get('incidents')
+  getIncidents (token) {
+    return Api().get('incidents', token)
   },
   editIncident (id, token) {
     return Api().get(`incidents/${id}`, token)
