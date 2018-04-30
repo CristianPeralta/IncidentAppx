@@ -3,7 +3,7 @@
 
   <!-- START NAV -->
   <TheNav @showprofile="showprofile"></TheNav>
-  <Modal :title="datatable">
+  <Modal v-if="datatable == 'User Profile'" :title="datatable">
     <!-- <Form></Form> -->
     <template >
       <Profile></Profile>

@@ -1,4 +1,5 @@
 export default {
   incidents: [],
-  incidentDraft: {}
+  incidentDraft: {},
+  incidentIndex: 0
 }
