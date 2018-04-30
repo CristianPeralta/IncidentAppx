@@ -83,23 +83,10 @@ export default {
   },
   watch: {
     type (data) {
-      if (data === 'edit') {
-        this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
-          if (this.user) {
-            this.form = this.user
-          }
-        })
-      } else {
-        this.form = {
-          name: '',
-          lastname: '',
-          dni: '',
-          email: '',
-          cellphone: '',
-          dependence: '',
-          password: ''
-        }
-      }
+      this.getData(data)
+    },
+    data (data) {
+      this.getData(this.type)
     }
   },
   created () {
@@ -126,6 +113,25 @@ export default {
     },
     changeModal () {
       this.$store.dispatch('changeModal')
+    },
+    getData (type) {
+      if (type === 'edit') {
+        this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
+          if (this.user) {
+            this.form = this.user
+          }
+        })
+      } else {
+        this.form = {
+          name: '',
+          lastname: '',
+          dni: '',
+          email: '',
+          cellphone: '',
+          dependence: '',
+          password: ''
+        }
+      }
     }
   }
 }
