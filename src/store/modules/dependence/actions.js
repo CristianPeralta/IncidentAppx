@@ -1,7 +1,7 @@
 import Api from '../../../services/ApiServices'
 
-export const newDependence = ({dispatch, commit, state}) => {
-  Api.newDependence().then(({data}) => {
+export const newDependence = ({dispatch, commit, state}, form) => {
+  Api.newDependence(form).then(({data}) => {
     commit('GET_DEPENDENCES', data)
   })
 }

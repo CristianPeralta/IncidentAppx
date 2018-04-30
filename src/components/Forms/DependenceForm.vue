@@ -77,6 +77,7 @@ export default {
         this.$store.dispatch('dependence/editDependence', this.data, this.index).then(() => {
           if (this.dependence) {
             this.form = this.dependence
+            this.preview = this.dependence.photo
           }
         })
       } else {
