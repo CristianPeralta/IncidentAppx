@@ -3,6 +3,12 @@
 
   <!-- START NAV -->
   <TheNav @showprofile="showprofile"></TheNav>
+  <Modal :title="datatable">
+    <!-- <Form></Form> -->
+    <template >
+      <Profile></Profile>
+    </template>
+  </Modal>
   <!-- END NAV -->
   <div class="container">
     <div class="columns">
