@@ -73,23 +73,10 @@ export default {
   },
   watch: {
     type (data) {
-      if (data === 'edit') {
-        this.$store.dispatch('dependence/editDependence', this.data, this.index).then(() => {
-          if (this.dependence) {
-            this.form = this.dependence
-            this.preview = this.dependence.photo
-          }
-        })
-      } else {
-        this.form = {
-          name: '',
-          acronym: '',
-          annex: '',
-          latitude: '',
-          longitude: '',
-          photo: ''
-        }
-      }
+      this.getData(data)
+    },
+    data (data) {
+      this.getData(this.type)
     }
   },
   computed: {
@@ -107,6 +94,25 @@ export default {
     processFile (e) {
       this.form.photo = e.target.files[0]
       this.preview = URL.createObjectURL(e.target.files[0])
+    },
+    getData (type) {
+      if (type === 'edit') {
+        this.$store.dispatch('dependence/editDependence', this.data, this.index).then(() => {
+          if (this.dependence) {
+            this.form = this.dependence
+            this.preview = this.dependence.photo
+          }
+        })
+      } else {
+        this.form = {
+          name: '',
+          acronym: '',
+          annex: '',
+          latitude: '',
+          longitude: '',
+          photo: ''
+        }
+      }
     }
   }
 }
