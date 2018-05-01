@@ -42,6 +42,15 @@
         </div>
       </div>
 
+      <div class="field" v-if="form.status">
+        <div class="control">
+          <select v-model="form.status" class="input select" placeholder="status">
+            <option :value="false">Unable</option>
+            <option :value="true">Enable</option>
+          </select>
+        </div>
+      </div>
+
       <div class="field" v-if="type == 'create'">
         <div class="control">
           <input class="input is-large" type="password" v-model="form.password" placeholder="Your Password">
@@ -56,8 +65,8 @@
     </div>
 
       <footer class="modal-card-foot">
-        <button v-if="type == 'create'" @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Sign Me Up</button>
-        <button v-if="type == 'edit'" @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Save</button>
+        <button v-if="type == 'create'" @click="create()" class="button is-block is-info is-large is-fullwidth">Sign Me Up</button>
+        <button v-if="type == 'edit'" @click="update()" class="button is-block is-info is-large is-fullwidth">Save</button>
         <button @click="changeModal" class="button is-block is-large is-fullwidth">Cancel</button>
       </footer>
   </div>
@@ -101,12 +110,15 @@ export default {
     }
   },
   methods: {
-    sendForm () {
+    create () {
       if (this.form.password === this.passwordDraft) {
         this.$store.dispatch('user/signup', this.form)
       } else {
         alert('Password doesnt match')
       }
+    },
+    update () {
+      this.$store.dispatch('user/update', this.form)
     },
     getDependences () {
       this.$store.dispatch('dependence/getDependences')
@@ -119,6 +131,7 @@ export default {
         this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
           if (this.user) {
             this.form = this.user
+            this.form.dependence = this.user.dependence._id
           }
         })
       } else {

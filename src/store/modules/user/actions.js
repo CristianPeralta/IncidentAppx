@@ -2,10 +2,7 @@ import router from '../../../router'
 import ApiServices from '../../../services/ApiServices'
 
 export const signup = ({commit}, form) => {
-  ApiServices.signup(form).then(({data}) => {
-    commit('ADD_USER', data)
-    router.push({name: 'Home'})
-  })
+  ApiServices.signup(form)
 }
 export const getUser = ({commit, getters}) => {
   if (!getters.isOnline) {
