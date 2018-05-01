@@ -27,7 +27,7 @@ export const edit = ({commit, getters, state}, id) => {
 }
 export const update = ({commit, getters, state}, form) => {
   ApiServices.updateUser(form, getters.token).then(({data}) => {
-    commit('ADD_USER', data, state.userIndex)
+    commit('UPDATE_USER', data, state.userIndex)
   })
 }
 export const login = ({dispatch, commit, state}, form) => {
