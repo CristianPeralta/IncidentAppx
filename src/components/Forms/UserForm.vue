@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <div class="field" v-if="form.status">
+      <div class="field" v-if="form.status !== null">
         <div class="control">
           <select v-model="form.status" class="input select" placeholder="status">
             <option :value="false">Unable</option>
@@ -118,7 +118,9 @@ export default {
       }
     },
     update () {
-      this.$store.dispatch('user/update', this.form)
+      this.$store.dispatch('user/update', this.form).then(() => {
+        this.$store.dispatch('changeModal')
+      })
     },
     getDependences () {
       this.$store.dispatch('dependence/getDependences')
