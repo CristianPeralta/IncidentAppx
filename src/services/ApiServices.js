@@ -19,8 +19,8 @@ export default {
   editUser (id, token) {
     return Api().get(`users/${id}`, token)
   },
-  updateUser (id, params, token) {
-    return Api().put(`users/${id}`, params, token)
+  updateUser (params, token) {
+    return Api().put(`users`, params, token)
   },
   newDependence (params, token) {
     return Api().post('dependences', params, {

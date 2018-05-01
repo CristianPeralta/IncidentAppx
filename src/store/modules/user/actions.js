@@ -20,12 +20,12 @@ export const getUsers = ({commit, getters}) => {
     commit('GET_USERS', data)
   })
 }
-export const editUser = ({commit, getters, state}, id, index) => {
+export const edit = ({commit, getters, state}, id, index) => {
   return ApiServices.editUser(id, getters.token).then(({data}) => {
     commit('EDIT_USER', data, index)
   })
 }
-export const updateUser = ({commit, getters, state}, form) => {
+export const update = ({commit, getters, state}, form) => {
   ApiServices.updateUser(form, getters.token).then(({data}) => {
     commit('ADD_USER', data, state.userIndex)
   })

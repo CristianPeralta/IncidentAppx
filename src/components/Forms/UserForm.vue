@@ -128,7 +128,7 @@ export default {
     },
     getData (type) {
       if (type === 'edit') {
-        this.$store.dispatch('user/editUser', this.data, this.index).then(() => {
+        this.$store.dispatch('user/edit', this.data, this.index).then(() => {
           if (this.user) {
             this.form = this.user
             this.form.dependence = this.user.dependence._id
