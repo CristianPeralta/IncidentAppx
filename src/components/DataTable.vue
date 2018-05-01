@@ -50,15 +50,15 @@ export default {
       this.changeModal()
     },
     edit (id, index) {
+      this.$store.commit('user/ADD_INDEX', index - 1)
       this.action = 'edit'
       this.id = id
-      this.index = index
       this.changeModal()
     },
     remove (id, index) {
+      this.$store.commit('user/ADD_INDEX', index - 1)
       this.action = 'remove'
       this.id = id
-      this.index = index
       this.changeModal()
     },
     changeModal () {
