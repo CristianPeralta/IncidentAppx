@@ -109,7 +109,7 @@ export default {
     },
     getData (type) {
       if (type === 'edit') {
-        this.$store.dispatch('dependence/editDependence', this.data, this.index).then(() => {
+        this.$store.dispatch('dependence/edit', this.data, this.index).then(() => {
           if (this.dependence) {
             this.form = this.dependence
             this.preview = this.dependence.photo

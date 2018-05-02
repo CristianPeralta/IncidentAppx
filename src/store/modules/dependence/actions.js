@@ -15,13 +15,23 @@ export const newDependence = ({dispatch, commit, state}, form) => {
   })
 }
 
-export const editDependence = ({dispatch, commit, state}, id, index) => {
+export const edit = ({dispatch, commit, state}, id, index) => {
   return Api.editDependence(id).then(({data}) => {
     commit('EDIT_DEPENDENCE', data, index)
   })
 }
 
-export const updateDependence = ({dispatch, commit, state}, form) => {
+export const update = ({dispatch, commit, state}, form) => {
+  let formData = new FormData()
+
+  formData.append('_id', form._id)
+  formData.append('name', form.name)
+  formData.append('acronym', form.acronym)
+  formData.append('annex', form.annex)
+  formData.append('latitude', form.latitude)
+  formData.append('longitude', form.longitude)
+  formData.append('photo', form.photo)
+
   Api.updateDependence(form).then(({data}) => {
     commit('UPDATE_DEPENDENCE', data, state.dependenceIndex)
   })
