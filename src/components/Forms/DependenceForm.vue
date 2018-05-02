@@ -47,7 +47,11 @@
         </div>
       </div>
 
-      <button @click="sendForm()" class="button is-block is-info is-large is-fullwidth">Add</button>
+      <footer class="modal-card-foot">
+        <button v-if="type == 'create'" @click="create()" class="button is-block is-info is-large is-fullwidth">Add</button>
+        <button v-if="type == 'edit'" @click="update()" class="button is-block is-info is-large is-fullwidth">Save</button>
+        <button @click="changeModal" class="button is-block is-large is-fullwidth">Cancel</button>
+      </footer>
   </div>
 </template>
 
@@ -95,15 +99,19 @@ export default {
       this.form.photo = e.target.files[0]
       this.preview = URL.createObjectURL(e.target.files[0])
     },
+    changeModal () {
+      this.$store.dispatch('changeModal')
+    },
     getData (type) {
       if (type === 'edit') {
         this.$store.dispatch('dependence/editDependence', this.data, this.index).then(() => {
           if (this.dependence) {
             this.form = this.dependence
-            this.preview = 'http://localhost:3000' + this.dependence.photo.substring(6, this.dependence.photo.length)
+            this.preview = this.dependence.photo
           }
         })
       } else {
+        this.preview = 'https://st3.depositphotos.com/5266903/12981/v/950/depositphotos_129812138-stock-illustration-management-office-flat-vector-icon.jpg'
         this.form = {
           name: '',
           acronym: '',

@@ -106,7 +106,7 @@ export default {
       this.$store.dispatch('dependence/getDependences')
     },
     getUsers () {
-      this.$store.dispatch('USER/getUsers')
+      this.$store.dispatch('user/getUsers')
     }
     changeModal () {
       this.$store.dispatch('changeModal')
