@@ -2,7 +2,7 @@ export const GET_DEPENDENCES = (state, data) => {
   state.dependences = data
 }
 export const ADD_DEPENDENCE = (state, data) => {
-  state.dependences = data
+  state.dependences.push(data)
 }
 export const EDIT_DEPENDENCE = (state, data, index) => {
   state.dependenceDraft = data

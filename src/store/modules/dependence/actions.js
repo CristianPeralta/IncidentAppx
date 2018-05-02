@@ -1,8 +1,17 @@
 import Api from '../../../services/ApiServices'
 
 export const newDependence = ({dispatch, commit, state}, form) => {
-  Api.newDependence(form).then(({data}) => {
-    commit('GET_DEPENDENCES', data)
+  let formData = new FormData()
+
+  formData.append('name', form.name)
+  formData.append('acronym', form.acronym)
+  formData.append('annex', form.annex)
+  formData.append('latitude', form.latitude)
+  formData.append('longitude', form.longitude)
+  formData.append('photo', form.photo)
+
+  Api.newDependence(formData).then(({data}) => {
+    commit('ADD_DEPENDENCE', data)
   })
 }
 
@@ -20,8 +29,6 @@ export const updateDependence = ({dispatch, commit, state}, form) => {
 
 export const getDependences = ({dispatch, commit, state}) => {
   return Api.getDependences().then(({data}) => {
-    console.log('getting dependences')
-    console.log(data)
-    commit('ADD_DEPENDENCE', data)
+    commit('GET_DEPENDENCES', data)
   })
 }
