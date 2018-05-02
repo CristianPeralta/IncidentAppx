@@ -89,8 +89,13 @@ export default {
     }
   },
   methods: {
-    sendForm () {
+    create () {
       this.$store.dispatch('dependence/newDependence', this.form)
+    },
+    update () {
+      this.$store.dispatch('dependence/update', this.form).then(() => {
+        this.changeModal()
+      })
     },
     getDependences () {
       this.$store.dispatch('dependence/getDependences')

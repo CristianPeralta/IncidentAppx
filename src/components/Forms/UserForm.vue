@@ -119,7 +119,7 @@ export default {
     },
     update () {
       this.$store.dispatch('user/update', this.form).then(() => {
-        this.$store.dispatch('changeModal')
+        this.changeModal()
       })
     },
     getDependences () {
