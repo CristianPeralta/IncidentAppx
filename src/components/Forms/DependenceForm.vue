@@ -100,7 +100,7 @@ export default {
         this.$store.dispatch('dependence/editDependence', this.data, this.index).then(() => {
           if (this.dependence) {
             this.form = this.dependence
-            this.preview = this.dependence.photo
+            this.preview = 'http://localhost:3000' + this.dependence.photo.substring(6, this.dependence.photo.length)
           }
         })
       } else {
