@@ -14,8 +14,11 @@
         <ul class="menu-list">
           <li><a>Incidencias</a></li>
           <li><a @click="showUsers">Usuarios</a></li>
+          <router-link @click="showUsers" :to="{ path: '/section/usuarios' }">Usuarios Routes</router-link>
           <li><a @click="showSolicitudes">Solicitudes</a></li>
+          <router-link @click="showSolicitudes" :to="{ path: '/section/solicitudes' }">Solicitudes Routes</router-link>
           <li><a @click="showDependences">Dependencias</a></li>
+          <router-link @click="showDependences" :to="{ path: '/section/dependencias' }">Dependencias Routes</router-link>
         </ul>
       </template>
       <template v-if="isTechnician">
