@@ -17,7 +17,7 @@
         <!-- <SubNav></SubNav> -->
         <!-- <a @click="changeModal" v-if="datatable" class="button is-link">New</a> -->
         <!-- START CONTENT -->
-        <DataTable v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role', 'actions']" :dataD="allUsers" :optionsD="{
+        <Section v-if="datatable == 'users'" :columnsD="['name', 'email', 'dependence', 'role', 'actions']" :dataD="allUsers" :optionsD="{
           headings: {
             'name': 'Name',
             'email': 'Email',
@@ -27,9 +27,9 @@
           sortable: ['name', 'email', 'role'],
           filterable: ['name', 'email', 'role']
         }">
-        </DataTable>
+        </Section>
 
-        <DataTable v-if="datatable == 'solicitudes'" :columnsD="['name', 'email', 'role', 'actions']" :dataD="allSolicitudes" :optionsD="{
+        <Section v-if="datatable == 'solicitudes'" :columnsD="['name', 'email', 'role', 'actions']" :dataD="allSolicitudes" :optionsD="{
           headings: {
             'name': 'Name',
             'email': 'Email',
@@ -37,9 +37,9 @@
           },
           sortable: ['name', 'email', 'role'],
           filterable: ['name', 'email', 'role']
-        }"></DataTable>
+        }"></Section>
 
-        <DataTable v-if="datatable == 'dependences'" :columnsD="['name', 'acronym', 'annex', 'actions']" :dataD="allDependences" :optionsD="{
+        <Section v-if="datatable == 'dependences'" :columnsD="['name', 'acronym', 'annex', 'actions']" :dataD="allDependences" :optionsD="{
           headings: {
             'name': 'Name',
             'acronym': 'Acronym',
@@ -47,7 +47,7 @@
           },
           sortable: ['name', 'acronym', 'annex'],
           filterable: ['name', 'acronym', 'annex']
-        }"></DataTable>
+        }"></Section>
         <!-- END CONTENT -->
       </div>
     </div>
@@ -60,7 +60,7 @@ import TheNav from './utils/TheNav'
 import TheMenu from './utils/TheMenu'
 import TheFooter from './utils/TheFooter'
 import SubNav from './utils/SubNav'
-import DataTable from './DataTable'
+import Section from './Section'
 import Modal from './Modal'
 import DependenceForm from './Forms/DependenceForm'
 import UserForm from './Forms/UserForm'
@@ -72,7 +72,7 @@ export default {
     TheNav,
     TheMenu,
     SubNav,
-    DataTable,
+    Section,
     TheFooter,
     Modal,
     Profile,

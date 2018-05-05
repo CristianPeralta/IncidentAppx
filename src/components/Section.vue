@@ -25,7 +25,7 @@ import DependenceForm from './Forms/DependenceForm'
 import UserForm from './Forms/UserForm'
 
 export default {
-  name: 'DataTable',
+  name: 'Section',
   props: ['columnsD', 'dataD', 'optionsD'],
   data () {
     return {
