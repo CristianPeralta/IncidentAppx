@@ -9,7 +9,23 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     datatable: '',
-    modalActive: false
+    modalActive: false,
+    section: {
+      'users': {
+        'columns': ['name', 'acronym', 'annex', 'actions'],
+        'data': '',
+        'options': {
+          headings: {
+            'name': 'Name',
+            'acronym': 'Acronym',
+            'annex': 'Annex'
+          },
+          sortable: ['name', 'acronym', 'annex'],
+          filterable: ['name', 'acronym', 'annex']
+        }
+      }
+    }
+
   },
   modules: {
     user,
