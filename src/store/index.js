@@ -7,6 +7,10 @@ import dependence from './modules/dependence'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  modules: {
+    user,
+    dependence
+  },
   state: {
     datatable: '',
     modalActive: false,
@@ -49,13 +53,20 @@ export default new Vuex.Store({
           sortable: ['name', 'acronym', 'annex'],
           filterable: ['name', 'acronym', 'annex']
         }
+      },
+      'incidents': {
+        'columns': ['category', 'priority', 'dependence', 'actions'],
+        'data': '',
+        'options': {
+          headings: {
+            'category': 'Category',
+            'priority': 'Priority'
+          },
+          sortable: ['category', 'priority'],
+          filterable: ['category', 'priority']
+        }
       }
     }
-
-  },
-  modules: {
-    user,
-    dependence
   },
   mutations: {
     ADD_DATATABLE (state, data) {
