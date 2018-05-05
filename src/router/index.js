@@ -6,7 +6,7 @@ import Home from '@/components/Home'
 import NewDependence from '@/components/NewDependence'
 import SignUp from '@/components/SignUp'
 
-import DataTable from '@/components/DataTable'
+import Section from '@/components/Section'
 
 Vue.use(Router)
 
@@ -33,9 +33,9 @@ export default new Router({
       component: NewDependence
     },
     {
-      path: '/datatable',
-      name: 'DataTable',
-      component: DataTable
+      path: '/section/:name',
+      name: 'Section',
+      component: Section
     }
 
   ]
