@@ -23,6 +23,19 @@ export default new Vuex.Store({
           sortable: ['name', 'acronym', 'annex'],
           filterable: ['name', 'acronym', 'annex']
         }
+      },
+      'solicitudes': {
+        'columns': ['name', 'email', 'role', 'actions'],
+        'data': '',
+        'options': {
+          headings: {
+            'name': 'Name',
+            'email': 'Email',
+            'role': 'Role'
+          },
+          sortable: ['name', 'email', 'role'],
+          filterable: ['name', 'email', 'role']
+        }
       }
     }
 
