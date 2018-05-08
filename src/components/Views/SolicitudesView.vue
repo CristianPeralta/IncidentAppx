@@ -16,6 +16,11 @@ export default {
   name: 'SolicitudesView'
   components: {
     Section
+  },
+  computed: {
+    section () {
+      return this.$store.getters['section']
+    }
   }
 }
 </script>
