@@ -14,7 +14,8 @@ export default new Vuex.Store({
   state: {
     datatable: '',
     modalActive: false,
-    section: {
+    section: '',
+    sectionOptions: {
       'users': {
         'columns': ['name', 'acronym', 'annex', 'actions'],
         'data': '',
@@ -66,6 +67,11 @@ export default new Vuex.Store({
           filterable: ['category', 'priority']
         }
       }
+    }
+  },
+  getters: {
+    section (state) {
+      return state.section
     }
   },
   mutations: {

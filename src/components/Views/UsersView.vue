@@ -17,6 +17,11 @@ export default {
   name: 'UsersView'
   components: {
     Section
+  },
+  computed: {
+    section () {
+      return this.$store.getters['section']
+    }
   }
 }
 </script>
