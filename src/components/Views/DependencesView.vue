@@ -1,5 +1,5 @@
 <template lang="html">
-  <Section v-if="datatable == 'dependences'" :columnsD="['name', 'acronym', 'annex', 'actions']" :dataD="allDependences" :optionsD="{
+  <Section :columnsD="['name', 'acronym', 'annex', 'actions']" :dataD="allDependences" :optionsD="{
     headings: {
       'name': 'Name',
       'acronym': 'Acronym',
@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import Section from './Section'
+import Section from '../Section'
+
 export default {
   name: 'DependencesView'
   components: {

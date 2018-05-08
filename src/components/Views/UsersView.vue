@@ -1,19 +1,20 @@
 <template lang="html">
-  <Section v-if="datatable == 'solicitudes'" :columnsD="['name', 'email', 'role', 'actions']" :dataD="allSolicitudes" :optionsD="{
+  <Section :columnsD="['name', 'email', 'dependence', 'role', 'actions']" :dataD="allUsers" :optionsD="{
     headings: {
       'name': 'Name',
       'email': 'Email',
+      'dependence': 'Dependence',
       'role': 'Role'
     },
     sortable: ['name', 'email', 'role'],
     filterable: ['name', 'email', 'role']
-  }"></Section>
+  }">
 </template>
 
 <script>
-import Section from './Section'
+import Section from '../Section'
 export default {
-  name: 'SolicitudesView'
+  name: 'UsersView'
   components: {
     Section
   }
