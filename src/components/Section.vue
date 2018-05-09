@@ -42,6 +42,9 @@ export default {
   computed: {
     datatable () {
       return this.$store.state.datatable
+    },
+    config () {
+      return this.$store.getters['sectionConfig']
     }
   },
   methods: {

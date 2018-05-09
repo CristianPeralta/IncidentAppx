@@ -21,6 +21,9 @@ export default {
   computed: {
     section () {
       return this.$store.getters['section']
+    },
+    config () {
+      return this.$store.getters['sectionConfig']
     }
   }
 }
