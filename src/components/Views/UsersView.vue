@@ -8,13 +8,13 @@
     },
     sortable: ['name', 'email', 'role'],
     filterable: ['name', 'email', 'role']
-  }">
+  }"></Section>
 </template>
 
 <script>
 import Section from '../Section'
 export default {
-  name: 'UsersView'
+  name: 'UsersView',
   components: {
     Section
   },

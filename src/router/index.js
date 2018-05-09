@@ -7,6 +7,9 @@ import NewDependence from '@/components/NewDependence'
 import SignUp from '@/components/SignUp'
 
 import Section from '@/components/Section'
+import UsersView from '@/components/Views/UsersView'
+import SolicitudesView from '@/components/Views/SolicitudesView'
+import DependencesView from '@/components/Views/DependencesView'
 
 Vue.use(Router)
 
@@ -36,6 +39,21 @@ export default new Router({
       path: '/section/:name',
       name: 'Section',
       component: Section
+    },
+    {
+      path: '/users',
+      name: 'Users',
+      component: UsersView
+    },
+    {
+      path: '/solicitudes',
+      name: 'Solicitudes',
+      component: SolicitudesView
+    },
+    {
+      path: '/dependences',
+      name: 'Dependences',
+      component: DependencesView
     }
 
   ]

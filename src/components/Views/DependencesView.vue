@@ -14,7 +14,7 @@
 import Section from '../Section'
 
 export default {
-  name: 'DependencesView'
+  name: 'DependencesView',
   components: {
     Section
   },

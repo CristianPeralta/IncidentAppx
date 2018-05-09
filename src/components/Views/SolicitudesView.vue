@@ -13,7 +13,7 @@
 <script>
 import Section from '../Section'
 export default {
-  name: 'SolicitudesView'
+  name: 'SolicitudesView',
   components: {
     Section
   },
