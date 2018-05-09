@@ -75,7 +75,7 @@ export default new Vuex.Store({
     },
     sectionConfig (state, rootGetters) {
       let config = state.sectionOptions[state.section]
-      config.data = rootGetters['users/users']
+      config.data = rootGetters[`${state.section}/${state.section}`]
       return config
     }
   },
