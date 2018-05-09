@@ -72,6 +72,9 @@ export default new Vuex.Store({
   getters: {
     section (state) {
       return state.section
+    },
+    sectionConfig (state) {
+      return state.sectionOptions[state.section]
     }
   },
   mutations: {
@@ -80,15 +83,20 @@ export default new Vuex.Store({
     },
     CHANGE_MODAL (state, data) {
       state.modalActive = !state.modalActive
+    },
+    SET_SECTION (state, data) {
+      state.section = data
     }
   },
   actions: {
     addDatatable ({dispatch, commit, state}, data) {
       commit('ADD_DATATABLE', data)
     },
-    changeModal ({dispatch, commit, state}) {
-      console.log('peticion to change modal')
+    changeModal ({dispatch, commit, state}) {      
       commit('CHANGE_MODAL')
+    },
+    setSection ({dispatch, commit, state}, data) {
+      commit('SET_SECTION', data)
     }
   }
 })
