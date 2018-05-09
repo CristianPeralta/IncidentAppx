@@ -57,16 +57,19 @@ export default {
   },
   methods: {
     showUsers () {
+      this.$store.dispatch('setSection', 'users')
       this.$store.dispatch('user/getUsers').then(() => {
         this.$store.dispatch('addDatatable', 'users')
       })
     },
     showDependences () {
+      this.$store.dispatch('setSection', 'dependences')
       this.$store.dispatch('dependence/getDependences').then(() => {
         this.$store.dispatch('addDatatable', 'dependences')
       })
     },
     showSolicitudes () {
+      this.$store.dispatch('setSection', 'solicitudes')
       this.$store.dispatch('user/getSolicitudes').then(() => {
         this.$store.dispatch('addDatatable', 'solicitudes')
       })
