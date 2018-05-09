@@ -14,7 +14,7 @@ export default new Vuex.Store({
   state: {
     datatable: '',
     modalActive: false,
-    section: '',
+    section: 'users',
     sectionOptions: {
       'users': {
         'columns': ['name', 'acronym', 'annex', 'actions'],
@@ -73,8 +73,10 @@ export default new Vuex.Store({
     section (state) {
       return state.section
     },
-    sectionConfig (state) {
-      return state.sectionOptions[state.section]
+    sectionConfig (state, rootGetters) {
+      let config = state.sectionOptions[state.section]
+      config.data = rootGetters['users/users']
+      return config
     }
   },
   mutations: {
@@ -84,19 +86,19 @@ export default new Vuex.Store({
     CHANGE_MODAL (state, data) {
       state.modalActive = !state.modalActive
     },
-    SET_SECTION (state, data) {
-      state.section = data
+    SET_SECTION (state, section) {
+      state.section = section
     }
   },
   actions: {
     addDatatable ({dispatch, commit, state}, data) {
       commit('ADD_DATATABLE', data)
     },
-    changeModal ({dispatch, commit, state}) {      
+    changeModal ({dispatch, commit, state}) {
       commit('CHANGE_MODAL')
     },
-    setSection ({dispatch, commit, state}, data) {
-      commit('SET_SECTION', data)
+    setSection ({dispatch, commit, state}, section) {
+      commit('SET_SECTION', section)
     }
   }
 })
